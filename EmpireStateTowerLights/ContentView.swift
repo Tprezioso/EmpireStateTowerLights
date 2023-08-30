@@ -6,16 +6,41 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
+struct EmpireStateFeature: Reducer {
+    
+    
+    struct State: Equatable {
+        
+    }
+    
+    enum Action: Equatable {
+        
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+                
+            }
+        }
+    }
+}
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.indigo, .black]), startPoint: .topLeading, endPoint: .bottomTrailing).ignoresSafeArea()
+            VStack {
+                Text("Date")
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundColor(.accentColor)
+                Text("Lights discription")
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
