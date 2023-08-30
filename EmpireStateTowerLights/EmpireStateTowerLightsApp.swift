@@ -11,7 +11,9 @@ import SwiftUI
 struct EmpireStateTowerLightsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CurrentTowerLightsView(store: .init(initialState: CurrentTowerLightsFeature.State()) {
+                CurrentTowerLightsFeature()
+            })
         }
     }
 }
