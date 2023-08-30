@@ -67,6 +67,14 @@ struct CurrentTowerLightsView: View {
                 }.padding()
                 Spacer()
             }
+            .task {
+                do {
+                    try await TowerService().getTowerData()
+                } catch {
+                    print("errrror")
+                }
+                
+            }
             .foregroundColor(.white)
             .padding()
         }.nightBackground()

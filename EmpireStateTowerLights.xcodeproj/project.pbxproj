@@ -12,7 +12,9 @@
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
 		5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */; };
 		5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5584EC382A9EC16E00781AD5 /* ComposableArchitecture */; };
-		55D512C82A9EDDCF00044A4E /* TowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* TowerModel.swift */; };
+		55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
+		55D512CA2A9FF86300044A4E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C92A9FF86300044A4E /* NetworkManager.swift */; };
+		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +23,8 @@
 		5584EC2B2A9EB39A00781AD5 /* CurrentTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTowerLightsView.swift; sourceTree = "<group>"; };
 		5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		55D512C72A9EDDCF00044A4E /* TowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerModel.swift; sourceTree = "<group>"; };
+		55D512C72A9EDDCF00044A4E /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
+		55D512C92A9FF86300044A4E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +33,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */,
+				55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +61,8 @@
 			children = (
 				5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */,
 				5584EC2B2A9EB39A00781AD5 /* CurrentTowerLightsView.swift */,
-				55D512C72A9EDDCF00044A4E /* TowerModel.swift */,
+				55D512C72A9EDDCF00044A4E /* Tower.swift */,
+				55D512C92A9FF86300044A4E /* NetworkManager.swift */,
 				5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */,
 				5584EC2F2A9EB39B00781AD5 /* Preview Content */,
 			);
@@ -90,6 +95,7 @@
 			name = EmpireStateTowerLights;
 			packageProductDependencies = (
 				5584EC382A9EC16E00781AD5 /* ComposableArchitecture */,
+				55D512CC2A9FF8A600044A4E /* SwiftSoup */,
 			);
 			productName = EmpireStateTowerLights;
 			productReference = 5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */;
@@ -121,6 +127,7 @@
 			mainGroup = 5584EC1D2A9EB39A00781AD5;
 			packageReferences = (
 				5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 5584EC272A9EB39A00781AD5 /* Products */;
 			projectDirPath = "";
@@ -148,9 +155,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D512CA2A9FF86300044A4E /* NetworkManager.swift in Sources */,
 				5584EC2C2A9EB39A00781AD5 /* CurrentTowerLightsView.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
-				55D512C82A9EDDCF00044A4E /* TowerModel.swift in Sources */,
+				55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +369,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -368,6 +384,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		55D512CC2A9FF8A600044A4E /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
