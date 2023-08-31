@@ -12,6 +12,7 @@ struct CurrentTowerLightsFeature: Reducer {
         
     struct State: Equatable {
         @BindingState var dateSelection: Days = .today
+        var towers = [Tower]() 
         
         enum Days: CustomStringConvertible, Hashable, CaseIterable {
             case yesterday, today, tomorrow
@@ -31,13 +32,29 @@ struct CurrentTowerLightsFeature: Reducer {
     
     enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
+        case onAppear
+        case didReceiveData([Tower])
     }
     
+    @Dependency(\.towerClient) var towerClient
     var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
             switch action {                
             case .binding:
+                return .none
+           
+            case .onAppear:
+                return .run { send in
+                    do {
+                        let towers = try await towerClient.getTowerData()
+                        await send(.didReceiveData(towers!))
+                    } catch {
+                        
+                    }
+                }
+            case .didReceiveData(let towers):
+                
                 return .none
             }
         }
@@ -67,13 +84,8 @@ struct CurrentTowerLightsView: View {
                 }.padding()
                 Spacer()
             }
-            .task {
-                do {
-                    try await TowerService().getTowerData()
-                } catch {
-                    print("errrror")
-                }
-                
+            .onAppear {
+               
             }
             .foregroundColor(.white)
             .padding()

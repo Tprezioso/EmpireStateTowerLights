@@ -7,8 +7,10 @@
 
 import Foundation
 
-public struct Tower {
-    var date: Date
-    var image: String
-    var description: String
+public struct Tower: Equatable {
+    var day: String?
+    var date: String?
+    var image: String?
+    var light: String?
+    var content: String?
 }

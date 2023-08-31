@@ -9,54 +9,58 @@ import Foundation
 import SwiftSoup
 import ComposableArchitecture
 
-public final class TowerService {
-    
-    static let shared = TowerService()
-    
-    public func getTowerData() async throws -> Tower? {
-        guard let url = URL(string: "https://www.esbnyc.com/about/tower-lights/calendar") else { throw NetworkError.invalidURL }
-        
-        let (data, response) = try await URLSession.shared.data(from: url)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            print(" ❌ Invalid Response")
-            throw NetworkError.invalidResponse
-        }
-        guard let htmlString = String(data: data, encoding: .utf8) else {
-            return nil
-        }
-        
-            
-        do {
-            let html: String = htmlString
-            let doc: Document = try SwiftSoup.parse(html)
-            let classes: [Element] = try! doc.getElementsByClass("lse__content").array()
-            print(classes[0])
+struct TowerClient {
+    let baseURL = "https://www.esbnyc.com"
+        let calendarEndPoint = "/about/tower-lights/calendar"
+    var getTowerData:() async throws -> [Tower]?
+}
 
-            for item in classes {
-                let image: String? = try item.select("img[src]").first()?.attr("src")
-                print(image)
+extension TowerClient: DependencyKey {
+    static var liveValue = TowerClient(
+        getTowerData: {
+            guard let url = URL(string: "https://www.esbnyc.com/about/tower-lights/calendar") else { throw NetworkError.invalidURL }
+            
+            let (data, response) = try await URLSession.shared.data(from: url)
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                print(" ❌ Invalid Response")
+                throw NetworkError.invalidResponse
             }
+            guard let htmlString = String(data: data, encoding: .utf8) else { return nil }
             
-            let images: Element = try doc.select("a").first()!
-            let text: String = try doc.body()!.text() // "An example link."
-//            let image: String? = try images?.attr("href")
-//            let linkHref: String = try link.attr("href") // "http://example.com/"
-//            let linkText: String = try link.text() // "example"
-//
-//            let linkOuterH: String = try link.outerHtml() // "<a href="http://example.com/"><b>example</b></a>"
-//            let linkInnerH: String = try link.html() // "<b>example</b>"
+            var towers = [Tower]()
             
-            return Tower(date: .now, image: "", description: "This Tower is big")
-        } catch Exception.Error(let message) {
-            print(message)
-            
-            return nil
+            do {
+                let html: String = htmlString
+                let doc: Document = try SwiftSoup.parse(html)
+                let classes: [Element] = try! doc.getElementsByClass("lse__content").array()
+                
+                for item in classes {
+                    let image: String? = try item.select("img[src]").first()?.attr("src")
+                    let day: String? = try item.getElementsByClass("day--day").text()
+                    let date: String? = try item.getElementsByClass("day--info").text()
+                    let light: String? = try item.getElementsByClass("name").text()
+                    let content: String? = try item.getElementsByClass("content").text()
+                    //                print(image) // (baseURL + "/sites/default/files/styles/tower_lights_calendar/public/a1r4P00000FhvC0QAJ.jpg?itok=aCd0uGTO")
+                    towers.append(Tower(day: day, date: date, image: image, light: light, content: content))
+                }
+                return towers
+            } catch {
+                print(error.localizedDescription)
+                return nil
+            }
         }
+    )
+}
+
+extension DependencyValues {
+    var towerClient: TowerClient {
+        get { self[TowerClient.self] }
+        set { self[TowerClient.self] = newValue }
     }
-    
 }
 
 enum NetworkError: Error {
     case invalidURL
     case invalidResponse
+    case invalidData
 }
