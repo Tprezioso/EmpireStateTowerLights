@@ -12,7 +12,7 @@ struct CurrentTowerLightsFeature: Reducer {
         
     struct State: Equatable {
         @BindingState var dateSelection: Days = .today
-        var towers = [Tower]() 
+        var towers = [Tower]()
         
         enum Days: CustomStringConvertible, Hashable, CaseIterable {
             case yesterday, today, tomorrow
@@ -53,8 +53,9 @@ struct CurrentTowerLightsFeature: Reducer {
                         
                     }
                 }
-            case .didReceiveData(let towers):
-                
+            
+            case let .didReceiveData(towers):
+                state.towers = towers
                 return .none
             }
         }
@@ -84,9 +85,7 @@ struct CurrentTowerLightsView: View {
                 }.padding()
                 Spacer()
             }
-            .onAppear {
-               
-            }
+            .onAppear { viewStore.send(.onAppear) }
             .foregroundColor(.white)
             .padding()
         }.nightBackground()
