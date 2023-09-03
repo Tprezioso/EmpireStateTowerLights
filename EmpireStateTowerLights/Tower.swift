@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Tower: Equatable {
+public struct Tower: Equatable, Hashable {
     var day: String?
     var date: String?
     var image: String?

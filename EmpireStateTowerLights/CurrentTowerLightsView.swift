@@ -47,8 +47,10 @@ struct CurrentTowerLightsFeature: Reducer {
             case .onAppear:
                 return .run { send in
                     do {
-                        let towers = try await towerClient.getTowerData()
-                        await send(.didReceiveData(towers!))
+                        guard let towers = try await towerClient.getTowerData() else {
+                            return
+                        }
+                        await send(.didReceiveData(towers))
                     } catch {
                         
                     }
@@ -75,14 +77,29 @@ struct CurrentTowerLightsView: View {
                 }.pickerStyle(.segmented)
                 
                 
-                VStack(spacing: 12) {
-                    Image(systemName: "building")
-                        .resizable()
-                        .frame(width: 100,height: 150)
-                        .foregroundColor(.white)
-                    Text("Date")
-                    Text("Lights description")
-                }.padding()
+                ScrollView {
+                    ForEach(viewStore.towers, id: \.self) { tower in
+                            VStack(spacing: 12) {
+                                
+                                AsyncImage(url: URL(string: tower.image!) ) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        
+                                } placeholder: {
+                                    Image(systemName: "building")
+                                        .resizable()
+                                        .frame(width: 100,height: 150)
+                                        .foregroundColor(.white)
+                                }
+
+                               
+                                Text("\(tower.day ?? "") \(tower.date ?? "")")
+                                Text(tower.light ?? "")
+                                Text(tower.content ?? "")
+                            }.padding()
+                    }
+                }
                 Spacer()
             }
             .onAppear { viewStore.send(.onAppear) }

@@ -10,12 +10,14 @@ import SwiftSoup
 import ComposableArchitecture
 
 struct TowerClient {
-    let baseURL = "https://www.esbnyc.com"
-        let calendarEndPoint = "/about/tower-lights/calendar"
+    
+    let calendarEndPoint = "/about/tower-lights/calendar"
     var getTowerData:() async throws -> [Tower]?
 }
 
 extension TowerClient: DependencyKey {
+    static let baseURL = "https://www.esbnyc.com"
+    
     static var liveValue = TowerClient(
         getTowerData: {
             guard let url = URL(string: "https://www.esbnyc.com/about/tower-lights/calendar") else { throw NetworkError.invalidURL }
@@ -41,7 +43,7 @@ extension TowerClient: DependencyKey {
                     let light: String? = try item.getElementsByClass("name").text()
                     let content: String? = try item.getElementsByClass("content").text()
                     //                print(image) // (baseURL + "/sites/default/files/styles/tower_lights_calendar/public/a1r4P00000FhvC0QAJ.jpg?itok=aCd0uGTO")
-                    towers.append(Tower(day: day, date: date, image: image, light: light, content: content))
+                    towers.append(Tower(day: day, date: date, image: baseURL + (image ?? ""), light: light, content: content))
                 }
                 return towers
             } catch {
@@ -50,6 +52,17 @@ extension TowerClient: DependencyKey {
             }
         }
     )
+}
+
+extension TowerClient: TestDependencyKey {
+    static var previewValue = TowerClient(getTowerData: {
+        return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+    })
+    
+    static var testValue = TowerClient(getTowerData: {
+        return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+    })
+    
 }
 
 extension DependencyValues {
