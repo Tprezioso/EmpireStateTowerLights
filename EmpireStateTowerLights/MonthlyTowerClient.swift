@@ -9,18 +9,18 @@ import Foundation
 import SwiftSoup
 import ComposableArchitecture
 
-struct TowerClient {
+struct MonthlyTowerClient {
     
-    let calendarEndPoint = "/about/tower-lights/calendar"
     var getTowerData:() async throws -> [Tower]?
 }
 
-extension TowerClient: DependencyKey {
+extension MonthlyTowerClient: DependencyKey {
     static let baseURL = "https://www.esbnyc.com"
+    static let calendarEndPoint = "/about/tower-lights/calendar"
     
-    static var liveValue = TowerClient(
+    static var liveValue = MonthlyTowerClient(
         getTowerData: {
-            guard let url = URL(string: "https://www.esbnyc.com/about/tower-lights/calendar") else { throw NetworkError.invalidURL }
+            guard let url = URL(string: baseURL + calendarEndPoint) else { throw NetworkError.invalidURL }
             
             let (data, response) = try await URLSession.shared.data(from: url)
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -42,7 +42,6 @@ extension TowerClient: DependencyKey {
                     let date: String? = try item.getElementsByClass("day--info").text()
                     let light: String? = try item.getElementsByClass("name").text()
                     let content: String? = try item.getElementsByClass("content").text()
-                    //                print(image) // (baseURL + "/sites/default/files/styles/tower_lights_calendar/public/a1r4P00000FhvC0QAJ.jpg?itok=aCd0uGTO")
                     towers.append(Tower(day: day, date: date, image: baseURL + (image ?? ""), light: light, content: content))
                 }
                 return towers
@@ -54,21 +53,21 @@ extension TowerClient: DependencyKey {
     )
 }
 
-extension TowerClient: TestDependencyKey {
-    static var previewValue = TowerClient(getTowerData: {
+extension MonthlyTowerClient: TestDependencyKey {
+    static var previewValue = MonthlyTowerClient(getTowerData: {
         return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
     })
     
-    static var testValue = TowerClient(getTowerData: {
+    static var testValue = MonthlyTowerClient(getTowerData: {
         return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
     })
     
 }
 
 extension DependencyValues {
-    var towerClient: TowerClient {
-        get { self[TowerClient.self] }
-        set { self[TowerClient.self] = newValue }
+    var towerClient: MonthlyTowerClient {
+        get { self[MonthlyTowerClient.self] }
+        set { self[MonthlyTowerClient.self] = newValue }
     }
 }
 

@@ -10,11 +10,11 @@ import XCTest
 import ComposableArchitecture
 
 @MainActor
-final class EmpireStateTowerLightsTests: XCTestCase {
+final class EmpireStateTowerMonthLightsTests: XCTestCase {
     
     func testCurrentTowerHappyPath() async {
-        let store = TestStore(initialState: CurrentTowerLightsFeature.State()) {
-            CurrentTowerLightsFeature()
+        let store = TestStore(initialState: MonthlyTowerLightsFeature.State()) {
+            MonthlyTowerLightsFeature()
         } withDependencies: {
             $0.towerClient = .testValue
         }

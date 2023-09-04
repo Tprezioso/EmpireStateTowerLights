@@ -1,15 +1,15 @@
 //
-//  ContentView.swift
+//  CurrentTowerLightsView.swift
 //  EmpireStateTowerLights
 //
-//  Created by Thomas Prezioso Jr on 8/29/23.
+//  Created by Thomas Prezioso Jr on 9/3/23.
 //
 
 import SwiftUI
 import ComposableArchitecture
 
 struct CurrentTowerLightsFeature: Reducer {
-        
+    
     struct State: Equatable {
         @BindingState var dateSelection: Days = .today
         var towers = [Tower]()
@@ -28,6 +28,7 @@ struct CurrentTowerLightsFeature: Reducer {
                 }
             }
         }
+
     }
     
     enum Action: Equatable, BindableAction {
@@ -36,18 +37,17 @@ struct CurrentTowerLightsFeature: Reducer {
         case didReceiveData([Tower])
     }
     
-    @Dependency(\.towerClient) var towerClient
+    @Dependency(\.currentTowerClient) var currentTowerClient
     var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
-            switch action {                
+            switch action {
             case .binding:
                 return .none
-           
             case .onAppear:
                 return .run { send in
                     do {
-                        guard let towers = try await towerClient.getTowerData() else {
+                        guard let towers = try await currentTowerClient.getCurrentTowerData() else {
                             return
                         }
                         await send(.didReceiveData(towers))
@@ -55,13 +55,14 @@ struct CurrentTowerLightsFeature: Reducer {
                         
                     }
                 }
-            
+
             case let .didReceiveData(towers):
                 state.towers = towers
                 return .none
             }
         }
     }
+    
 }
 
 struct CurrentTowerLightsView: View {
@@ -74,75 +75,63 @@ struct CurrentTowerLightsView: View {
                     ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
                         Text($0.description).tag($0)
                     }
+                    
                 }.pickerStyle(.segmented)
-                
-                
-                ScrollView {
-                    ForEach(viewStore.towers, id: \.self) { tower in
-                            VStack(spacing: 12) {
-                                
-                                AsyncImage(url: URL(string: tower.image!) ) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        
-                                } placeholder: {
-                                    Image(systemName: "building")
-                                        .resizable()
-                                        .frame(width: 100,height: 150)
-                                        .foregroundColor(.white)
-                                }
-
-                               
-                                Text("\(tower.day ?? "") \(tower.date ?? "")")
-                                Text(tower.light ?? "")
-                                Text(tower.content ?? "")
-                            }.padding()
+                if !viewStore.towers.isEmpty {
+                    switch viewStore.dateSelection {
+                    case .yesterday:
+                        TowerView(tower: viewStore.towers[0])
+                    case .today:
+                        Text("")
+                        TowerView(tower: viewStore.towers[1])
+                    case .tomorrow:
+                        Text("")
+                        TowerView(tower: viewStore.towers[2])
                     }
                 }
+                
                 Spacer()
-            }
-            .onAppear { viewStore.send(.onAppear) }
-            .foregroundColor(.white)
-            .padding()
-        }.nightBackground()
-            .preferredColorScheme(.dark)
-    }
-}
+            }.onAppear { viewStore.send(.onAppear) }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrentTowerLightsView(store: .init(initialState: CurrentTowerLightsFeature.State()) {
-            CurrentTowerLightsFeature()
-        })
-    }
-}
-
-
-struct NightBackground: ViewModifier {
-
-    func body(content: Content) -> some View {
-        ZStack {
-            LinearGradient(
-                gradient:
-                    Gradient(
-                        colors: [
-                            .indigo,
-                            .black
-                        ]
-                    ),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            content
         }
     }
 }
 
-extension View {
-    func nightBackground() -> some View {
-        modifier(NightBackground())
+struct CurrentTowerLightsView_Previews: PreviewProvider {
+    static var previews: some View {
+        CurrentTowerLightsView(
+            store: .init(initialState: .init(),
+            reducer: {
+            CurrentTowerLightsFeature()
+        }))
+    }
+}
+
+
+struct TowerView: View {
+    let tower: Tower?
+    var body: some View {
+        if let tower = tower {
             
+            VStack(spacing: 12) {
+                
+                AsyncImage(url: URL(string: tower.image!) ) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                    
+                } placeholder: {
+                    Image(systemName: "building")
+                        .resizable()
+                        .frame(width: 100,height: 150)
+                        .foregroundColor(.white)
+                }
+                
+                
+                Text("\(tower.day ?? "") \(tower.date ?? "")")
+                Text(tower.light ?? "")
+                Text(tower.content ?? "")
+            }.padding()
+        }
     }
 }

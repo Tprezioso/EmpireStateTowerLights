@@ -3,4 +3,99 @@
    uuid = "DA0EEAA0-4467-465C-91D3-5876A97F98D0"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6614832A-F306-46FC-8468-443069686BC8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EmpireStateTowerLights/CurrentTowerClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "liveValue"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "6614832A-F306-46FC-8468-443069686BC8 - 6ff859457c0f9738"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async throws -&gt; Swift.Optional&lt;Swift.Array&lt;EmpireStateTowerLights.Tower&gt;&gt; in variable initialization expression of static EmpireStateTowerLights.CurrentTowerClient.liveValue : EmpireStateTowerLights.CurrentTowerClient"
+                  moduleName = "EmpireStateTowerLights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomaspreziosojr/Desktop/Develop/iOS/Projects/EmpireStateTowerLights/EmpireStateTowerLights/CurrentTowerClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2360">
+               </Location>
+               <Location
+                  uuid = "6614832A-F306-46FC-8468-443069686BC8 - 6ff859457c0f9738"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async throws -&gt; Swift.Optional&lt;Swift.Array&lt;EmpireStateTowerLights.Tower&gt;&gt; in variable initialization expression of static EmpireStateTowerLights.CurrentTowerClient.liveValue : EmpireStateTowerLights.CurrentTowerClient"
+                  moduleName = "EmpireStateTowerLights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomaspreziosojr/Desktop/Develop/iOS/Projects/EmpireStateTowerLights/EmpireStateTowerLights/CurrentTowerClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2660">
+               </Location>
+               <Location
+                  uuid = "6614832A-F306-46FC-8468-443069686BC8 - 6ff859457c0f9738"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async throws -&gt; Swift.Optional&lt;Swift.Array&lt;EmpireStateTowerLights.Tower&gt;&gt; in variable initialization expression of static EmpireStateTowerLights.CurrentTowerClient.liveValue : EmpireStateTowerLights.CurrentTowerClient"
+                  moduleName = "EmpireStateTowerLights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomaspreziosojr/Desktop/Develop/iOS/Projects/EmpireStateTowerLights/EmpireStateTowerLights/CurrentTowerClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2204">
+               </Location>
+               <Location
+                  uuid = "6614832A-F306-46FC-8468-443069686BC8 - 6ff859457c0f9738"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async throws -&gt; Swift.Optional&lt;Swift.Array&lt;EmpireStateTowerLights.Tower&gt;&gt; in variable initialization expression of static EmpireStateTowerLights.CurrentTowerClient.liveValue : EmpireStateTowerLights.CurrentTowerClient"
+                  moduleName = "EmpireStateTowerLights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomaspreziosojr/Desktop/Develop/iOS/Projects/EmpireStateTowerLights/EmpireStateTowerLights/CurrentTowerClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2480">
+               </Location>
+               <Location
+                  uuid = "6614832A-F306-46FC-8468-443069686BC8 - 6ff859457c0f9738"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async throws -&gt; Swift.Optional&lt;Swift.Array&lt;EmpireStateTowerLights.Tower&gt;&gt; in variable initialization expression of static EmpireStateTowerLights.CurrentTowerClient.liveValue : EmpireStateTowerLights.CurrentTowerClient"
+                  moduleName = "EmpireStateTowerLights"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomaspreziosojr/Desktop/Develop/iOS/Projects/EmpireStateTowerLights/EmpireStateTowerLights/CurrentTowerClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "2084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
