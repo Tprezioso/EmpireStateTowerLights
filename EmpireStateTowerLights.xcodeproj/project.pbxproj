@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */; };
 		5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */; };
 		5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */; };
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFeature.swift; sourceTree = "<group>"; };
 		5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpireStateTowerLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerLightsApp.swift; sourceTree = "<group>"; };
 		5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerLightsView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5508D6DC2AA8061700E8F610 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				55D512C72A9EDDCF00044A4E /* Tower.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5508D6DD2AA8062900E8F610 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */,
+				55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
 		5584EC1D2A9EB39A00781AD5 = {
 			isa = PBXGroup;
 			children = (
@@ -86,11 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */,
+				5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */,
 				5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */,
 				55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */,
-				55D512C72A9EDDCF00044A4E /* Tower.swift */,
-				55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */,
-				55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */,
+				5508D6DC2AA8061700E8F610 /* Models */,
+				5508D6DD2AA8062900E8F610 /* Clients */,
 				5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */,
 				5584EC2F2A9EB39B00781AD5 /* Preview Content */,
 			);
@@ -222,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */,
+				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
 				5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
 				55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */,

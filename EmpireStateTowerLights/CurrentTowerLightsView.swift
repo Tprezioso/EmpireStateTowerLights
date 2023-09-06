@@ -28,7 +28,6 @@ struct CurrentTowerLightsFeature: Reducer {
                 }
             }
         }
-
     }
     
     enum Action: Equatable, BindableAction {
@@ -62,7 +61,7 @@ struct CurrentTowerLightsFeature: Reducer {
             }
         }
     }
-    
+
 }
 
 struct CurrentTowerLightsView: View {
