@@ -78,12 +78,6 @@ struct TabBarView: View {
 
 struct TabBarFeature_Previews: PreviewProvider {
     static var previews: some View {
-//        ContentView(
-//              store: Store(
-//                initialState: AppFeature.State(),
-//                reducer: AppFeature()
-//              )
-//            )
         TabBarView(store: .init(initialState: TabBarFeature.State()) {
             TabBarFeature()
         })
