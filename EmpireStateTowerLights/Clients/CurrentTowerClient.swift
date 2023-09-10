@@ -63,11 +63,19 @@ extension CurrentTowerClient: DependencyKey {
 
 extension CurrentTowerClient: TestDependencyKey {
     static var previewValue = CurrentTowerClient(getCurrentTowerData: {
-        return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+        return [
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+        ]
     })
     
     static var testValue = CurrentTowerClient(getCurrentTowerData: {
-        return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+        return [
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+        ]
     })
     
 }

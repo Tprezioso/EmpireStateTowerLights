@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */; };
+		550F60552AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F60542AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift */; };
 		5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */; };
 		5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */; };
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
@@ -16,7 +17,7 @@
 		55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
 		55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */; };
 		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
-		55D512D52AA4C61200044A4E /* EmpireStateTowerLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512D42AA4C61200044A4E /* EmpireStateTowerLightsTests.swift */; };
+		55D512D52AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */; };
 		55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */; };
 		55D512DE2AA528DE00044A4E /* CurrentTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFeature.swift; sourceTree = "<group>"; };
+		550F60542AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerCurrentLightsTest.swift; sourceTree = "<group>"; };
 		5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpireStateTowerLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerLightsApp.swift; sourceTree = "<group>"; };
 		5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerLightsView.swift; sourceTree = "<group>"; };
@@ -41,7 +43,7 @@
 		55D512C72A9EDDCF00044A4E /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerClient.swift; sourceTree = "<group>"; };
 		55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpireStateTowerLightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		55D512D42AA4C61200044A4E /* EmpireStateTowerLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerLightsTests.swift; sourceTree = "<group>"; };
+		55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift; sourceTree = "<group>"; };
 		55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTowerLightsView.swift; sourceTree = "<group>"; };
 		55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTowerClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,7 +129,8 @@
 		55D512D32AA4C61200044A4E /* EmpireStateTowerLightsTests */ = {
 			isa = PBXGroup;
 			children = (
-				55D512D42AA4C61200044A4E /* EmpireStateTowerLightsTests.swift */,
+				55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */,
+				550F60542AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift */,
 			);
 			path = EmpireStateTowerLightsTests;
 			sourceTree = "<group>";
@@ -254,7 +257,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D512D52AA4C61200044A4E /* EmpireStateTowerLightsTests.swift in Sources */,
+				550F60552AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift in Sources */,
+				55D512D52AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,11 +398,14 @@
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Empire Tower Lights";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,11 +430,14 @@
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Empire Tower Lights";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

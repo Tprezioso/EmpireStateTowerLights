@@ -14,3 +14,20 @@ public struct Tower: Equatable, Hashable {
     var light: String?
     var content: String?
 }
+
+extension Tower {
+    static let currentPreview = [
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+    ]
+    
+    static let monthlyPreview = [
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+    ]
+}

@@ -44,7 +44,7 @@ struct TabBarFeature: Reducer {
 }
 
 enum Tab {
-  case current, monthly
+    case current, monthly
 }
 
 struct TabBarView: View {
@@ -59,7 +59,7 @@ struct TabBarView: View {
                         action: TabBarFeature.Action.currentTowerTab
                     )
                 )
-                .tabItem { Text("Current") }
+                .tabItem { Label("Current", systemImage: "building") }
                 .tag(Tab.current)
                 
                 MonthlyTowerLightsView(
@@ -68,10 +68,10 @@ struct TabBarView: View {
                         action: TabBarFeature.Action.monthlyTowerTab
                     )
                 )
-                .tabItem { Text("Monthly") }
+                .tabItem { Label("Monthly", systemImage: "calendar") }
                 .tag(Tab.monthly)
                 
-            }
+            }.tint(.indigo)
         }
     }
 }

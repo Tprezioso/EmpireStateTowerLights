@@ -12,14 +12,15 @@ import ComposableArchitecture
 @MainActor
 final class EmpireStateTowerMonthLightsTests: XCTestCase {
     
-    func testCurrentTowerHappyPath() async {
-        let store = TestStore(initialState: MonthlyTowerLightsFeature.State()) {
+    func testMonthlyTowerHappyPath() async {
+        let store = TestStore(initialState:
+                                MonthlyTowerLightsFeature.State()) {
             MonthlyTowerLightsFeature()
         } withDependencies: {
             $0.towerClient = .testValue
         }
         
-        let testTower = [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+        let testTower = Tower.monthlyPreview
 
         await store.send(.onAppear)
         

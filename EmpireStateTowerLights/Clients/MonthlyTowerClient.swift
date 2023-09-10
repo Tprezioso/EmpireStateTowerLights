@@ -55,11 +55,25 @@ extension MonthlyTowerClient: DependencyKey {
 
 extension MonthlyTowerClient: TestDependencyKey {
     static var previewValue = MonthlyTowerClient(getTowerData: {
-        return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+        return [
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+        ]
     })
     
     static var testValue = MonthlyTowerClient(getTowerData: {
-        return [Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")]
+        return [
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+            Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+        ]
     })
     
 }
