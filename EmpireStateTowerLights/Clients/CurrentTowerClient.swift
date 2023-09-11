@@ -36,7 +36,6 @@ extension CurrentTowerClient: DependencyKey {
                 let notToday: [Element] = try doc.getElementsByClass("not-today").array()
                 var todayImage: String = try doc.getElementsByClass("background-image-wrapper").attr("style")
                 todayImage = todayImage.slice(from: "(", to: ")") ?? ""
-                print(todayImage)
                 let today: [Element]? = try doc.getElementsByClass("is-today").array()
                 let dayLight: String? = try today?.first?.select("h3").text()
                 let dayDate: String? = try today?.first?.select("h2").text()

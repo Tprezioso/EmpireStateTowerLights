@@ -13,8 +13,7 @@ import ComposableArchitecture
 final class EmpireStateTowerMonthLightsTests: XCTestCase {
     
     func testMonthlyTowerHappyPath() async {
-        let store = TestStore(initialState:
-                                MonthlyTowerLightsFeature.State()) {
+        let store = TestStore(initialState: MonthlyTowerLightsFeature.State()) {
             MonthlyTowerLightsFeature()
         } withDependencies: {
             $0.towerClient = .testValue

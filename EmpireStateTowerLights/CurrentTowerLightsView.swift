@@ -34,6 +34,8 @@ struct CurrentTowerLightsFeature: Reducer {
         case binding(BindingAction<State>)
         case onAppear
         case didReceiveData([Tower])
+        case swipedScreenLeft
+        case swipedScreenRight
     }
     
     @Dependency(\.currentTowerClient) var currentTowerClient
@@ -57,6 +59,30 @@ struct CurrentTowerLightsFeature: Reducer {
                 
             case let .didReceiveData(towers):
                 state.towers = towers
+                return .none
+            
+            case .swipedScreenLeft:
+                switch state.dateSelection {
+                    
+                case .yesterday:
+                    state.dateSelection = .today
+                case .today:
+                     state.dateSelection = .tomorrow
+                case .tomorrow:
+                    state.dateSelection = .tomorrow
+                }
+                return .none
+            
+            case .swipedScreenRight:
+                switch state.dateSelection {
+                    
+                case .yesterday:
+                    state.dateSelection = .yesterday
+                case .today:
+                     state.dateSelection = .yesterday
+                case .tomorrow:
+                    state.dateSelection = .today
+                }
                 return .none
             }
         }
@@ -90,6 +116,15 @@ struct CurrentTowerLightsView: View {
                     }
                     Spacer()
                 }
+                .gesture(DragGesture()
+                        .onEnded { value in
+                            if value.startLocation.x > value.location.x {
+                                viewStore.send(.swipedScreenLeft)
+                            } else {
+                                viewStore.send(.swipedScreenRight)
+                            }
+                        }
+                      )
                 .navigationTitle("Current Lights")
                 .padding()
                 .onAppear { viewStore.send(.onAppear) }
