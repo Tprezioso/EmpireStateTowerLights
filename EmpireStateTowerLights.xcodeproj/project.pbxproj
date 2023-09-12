@@ -20,6 +20,16 @@
 		55D512D52AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */; };
 		55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */; };
 		55D512DE2AA528DE00044A4E /* CurrentTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */; };
+		55F64ADB2AAFD84A00A5CCE5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */; };
+		55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */; };
+		55F64AE02AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */; };
+		55F64AE22AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */; };
+		55F64AE52AAFD84C00A5CCE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */; };
+		55F64AE72AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */; };
+		55F64AE82AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */; };
+		55F64AEB2AAFD84C00A5CCE5 /* EmpireStateTowerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55F64AF02AAFD8C500A5CCE5 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
+		55F64AF12AAFD8CA00A5CCE5 /* CurrentTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +40,28 @@
 			remoteGlobalIDString = 5584EC252A9EB39A00781AD5;
 			remoteInfo = EmpireStateTowerLights;
 		};
+		55F64AE92AAFD84C00A5CCE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5584EC1E2A9EB39A00781AD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55F64AD72AAFD84A00A5CCE5;
+			remoteInfo = EmpireStateTowerWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		55F64AEC2AAFD84C00A5CCE5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				55F64AEB2AAFD84C00A5CCE5 /* EmpireStateTowerWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFeature.swift; sourceTree = "<group>"; };
@@ -46,6 +77,14 @@
 		55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift; sourceTree = "<group>"; };
 		55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTowerLightsView.swift; sourceTree = "<group>"; };
 		55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTowerClient.swift; sourceTree = "<group>"; };
+		55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmpireStateTowerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerWidgetBundle.swift; sourceTree = "<group>"; };
+		55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerWidget.swift; sourceTree = "<group>"; };
+		55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = EmpireStateTowerWidget.intentdefinition; sourceTree = "<group>"; };
+		55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55F64AE62AAFD84C00A5CCE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +101,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55F64AD52AAFD84A00A5CCE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */,
+				55F64ADB2AAFD84A00A5CCE5 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +138,8 @@
 			children = (
 				5584EC282A9EB39A00781AD5 /* EmpireStateTowerLights */,
 				55D512D32AA4C61200044A4E /* EmpireStateTowerLightsTests */,
+				55F64ADE2AAFD84A00A5CCE5 /* EmpireStateTowerWidget */,
+				55F64AD92AAFD84A00A5CCE5 /* Frameworks */,
 				5584EC272A9EB39A00781AD5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +149,7 @@
 			children = (
 				5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */,
 				55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */,
+				55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +186,27 @@
 			path = EmpireStateTowerLightsTests;
 			sourceTree = "<group>";
 		};
+		55F64AD92AAFD84A00A5CCE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */,
+				55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55F64ADE2AAFD84A00A5CCE5 /* EmpireStateTowerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */,
+				55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */,
+				55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */,
+				55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */,
+				55F64AE62AAFD84C00A5CCE5 /* Info.plist */,
+			);
+			path = EmpireStateTowerWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,10 +217,12 @@
 				5584EC222A9EB39A00781AD5 /* Sources */,
 				5584EC232A9EB39A00781AD5 /* Frameworks */,
 				5584EC242A9EB39A00781AD5 /* Resources */,
+				55F64AEC2AAFD84C00A5CCE5 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				55F64AEA2AAFD84C00A5CCE5 /* PBXTargetDependency */,
 			);
 			name = EmpireStateTowerLights;
 			packageProductDependencies = (
@@ -177,6 +251,23 @@
 			productReference = 55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		55F64AD72AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55F64AEF2AAFD84C00A5CCE5 /* Build configuration list for PBXNativeTarget "EmpireStateTowerWidgetExtension" */;
+			buildPhases = (
+				55F64AD42AAFD84A00A5CCE5 /* Sources */,
+				55F64AD52AAFD84A00A5CCE5 /* Frameworks */,
+				55F64AD62AAFD84A00A5CCE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmpireStateTowerWidgetExtension;
+			productName = EmpireStateTowerWidgetExtension;
+			productReference = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,6 +284,9 @@
 					55D512D12AA4C61200044A4E = {
 						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = 5584EC252A9EB39A00781AD5;
+					};
+					55F64AD72AAFD84A00A5CCE5 = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -215,6 +309,7 @@
 			targets = (
 				5584EC252A9EB39A00781AD5 /* EmpireStateTowerLights */,
 				55D512D12AA4C61200044A4E /* EmpireStateTowerLightsTests */,
+				55F64AD72AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +331,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55F64AD62AAFD84A00A5CCE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55F64AE52AAFD84C00A5CCE5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F64AE82AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */,
 				55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */,
 				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
 				5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */,
@@ -262,6 +366,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55F64AD42AAFD84A00A5CCE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55F64AE02AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift in Sources */,
+				55F64AE22AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift in Sources */,
+				55F64AF12AAFD8CA00A5CCE5 /* CurrentTowerClient.swift in Sources */,
+				55F64AE72AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */,
+				55F64AF02AAFD8C500A5CCE5 /* Tower.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -269,6 +385,11 @@
 			isa = PBXTargetDependency;
 			target = 5584EC252A9EB39A00781AD5 /* EmpireStateTowerLights */;
 			targetProxy = 55D512D62AA4C61200044A4E /* PBXContainerItemProxy */;
+		};
+		55F64AEA2AAFD84C00A5CCE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55F64AD72AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension */;
+			targetProxy = 55F64AE92AAFD84C00A5CCE5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -390,6 +511,7 @@
 		5584EC352A9EB39B00781AD5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -422,6 +544,7 @@
 		5584EC362A9EB39B00781AD5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -487,6 +610,60 @@
 			};
 			name = Release;
 		};
+		55F64AED2AAFD84C00A5CCE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmpireStateTowerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EmpireStateTowerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.EmpireStateTowerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		55F64AEE2AAFD84C00A5CCE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmpireStateTowerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = EmpireStateTowerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.EmpireStateTowerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -513,6 +690,15 @@
 			buildConfigurations = (
 				55D512D92AA4C61200044A4E /* Debug */,
 				55D512DA2AA4C61200044A4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55F64AEF2AAFD84C00A5CCE5 /* Build configuration list for PBXNativeTarget "EmpireStateTowerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55F64AED2AAFD84C00A5CCE5 /* Debug */,
+				55F64AEE2AAFD84C00A5CCE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
