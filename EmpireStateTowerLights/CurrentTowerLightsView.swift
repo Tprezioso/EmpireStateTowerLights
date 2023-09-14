@@ -95,13 +95,13 @@ struct CurrentTowerLightsView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
-                ZStack {
-                    VStack {
+                VStack(spacing: 20) {
                         Picker("Pick your day", selection: viewStore.$dateSelection) {
                             ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
                                 Text($0.description).tag($0)
                             }
                         }.pickerStyle(.segmented)
+
                         if !viewStore.towers.isEmpty {
                             switch viewStore.dateSelection {
                             case .yesterday:
@@ -131,7 +131,7 @@ struct CurrentTowerLightsView: View {
                     .preferredColorScheme(.dark)
                 }
             }
-        }
+        
     }
 }
 
@@ -155,11 +155,15 @@ struct TowerView: View {
             ZStack {
                 AsyncImage(url: URL(string: tower.image!)) { phase in
                     if let image = phase.image {
-                        image
-                            .resizable()
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        GeometryReader { geo in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: geo.size.width, height: geo.size.height)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
                     } else if phase.error != nil {
-                        EmptyView()
+                        Image(systemName: "building")
                     } else {
                         ProgressView().progressViewStyle(.circular)
                             .controlSize(.large)
