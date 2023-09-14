@@ -95,41 +95,41 @@ struct CurrentTowerLightsView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
-                VStack {
-                    Picker("Pick your day", selection: viewStore.$dateSelection) {
-                        ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
-                            Text($0.description).tag($0)
-                        }
-                        
-                    }.pickerStyle(.segmented)
-                    if !viewStore.towers.isEmpty {
-                        switch viewStore.dateSelection {
-                        case .yesterday:
-                            TowerView(tower: viewStore.towers[0])
-                        case .today:
-                            Text("")
-                            TowerView(tower: viewStore.towers[1])
-                        case .tomorrow:
-                            Text("")
-                            TowerView(tower: viewStore.towers[2])
-                        }
-                    }
-                    Spacer()
-                }
-                .gesture(DragGesture()
-                        .onEnded { value in
-                            if value.startLocation.x > value.location.x {
-                                viewStore.send(.swipedScreenLeft)
-                            } else {
-                                viewStore.send(.swipedScreenRight)
+                ZStack {
+                    VStack {
+                        Picker("Pick your day", selection: viewStore.$dateSelection) {
+                            ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
+                                Text($0.description).tag($0)
+                            }
+                        }.pickerStyle(.segmented)
+                        if !viewStore.towers.isEmpty {
+                            switch viewStore.dateSelection {
+                            case .yesterday:
+                                TowerView(tower: viewStore.towers[0])
+                            case .today:
+                                TowerView(tower: viewStore.towers[1])
+                            case .tomorrow:
+                                TowerView(tower: viewStore.towers[2])
                             }
                         }
-                      )
-                .navigationTitle("Current Lights")
-                .padding()
-                .onAppear { viewStore.send(.onAppear) }
-                .nightBackground()
-                .preferredColorScheme(.dark)
+                        Spacer()
+                    }
+                    .gesture(
+                        DragGesture()
+                            .onEnded { value in
+                                if value.startLocation.x > value.location.x {
+                                    viewStore.send(.swipedScreenLeft)
+                                } else {
+                                    viewStore.send(.swipedScreenRight)
+                                }
+                            }
+                    )
+                    .navigationTitle("Current Lights")
+                    .padding()
+                    .onAppear { viewStore.send(.onAppear) }
+                    .nightBackground()
+                    .preferredColorScheme(.dark)
+                }
             }
         }
     }
@@ -168,13 +168,18 @@ struct TowerView: View {
                 
                 VStack(alignment: .leading, spacing: 12) {
                     Spacer()
-                    Text("\(tower.day ?? "") \(tower.date ?? "")")
-                        .font(isMonthlyView ? .body : .title)
-                    Text(tower.light ?? "")
-                        .font( isMonthlyView ? .title3 : .largeTitle)
-                    Text(tower.content ?? "")
-                        .font(isMonthlyView ? .caption : .headline)
-                }.padding()
+                    VStack(alignment: .leading) {
+                        Text(tower.light ?? "")
+                            .font( isMonthlyView ? .title3 : .largeTitle)
+                        Text("\(tower.day ?? "") \(tower.date ?? "")")
+                            .font(isMonthlyView ? .caption : .title)
+                        Text(tower.content ?? "")
+                            .font(isMonthlyView ? .caption : .headline)
+                    }
+                    .background(Color.black.opacity(0.3))
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                .padding()
             }
         }
     }

@@ -25,11 +25,13 @@
 		55F64AE02AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */; };
 		55F64AE22AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */; };
 		55F64AE52AAFD84C00A5CCE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */; };
-		55F64AE72AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */; };
-		55F64AE82AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */; };
 		55F64AEB2AAFD84C00A5CCE5 /* EmpireStateTowerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55F64AF02AAFD8C500A5CCE5 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
 		55F64AF12AAFD8CA00A5CCE5 /* CurrentTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DD2AA528DE00044A4E /* CurrentTowerClient.swift */; };
+		55F64AF42AB12DB900A5CCE5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 55F64AF32AB12DB900A5CCE5 /* ComposableArchitecture */; };
+		55F64AF62AB13A2400A5CCE5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AF52AB13A2400A5CCE5 /* NetworkError.swift */; };
+		55F64AF72AB13A2400A5CCE5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64AF52AB13A2400A5CCE5 /* NetworkError.swift */; };
+		55F64AF92AB13A5F00A5CCE5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55F64AF82AB13A5F00A5CCE5 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,9 +84,9 @@
 		55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerWidgetBundle.swift; sourceTree = "<group>"; };
 		55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerWidget.swift; sourceTree = "<group>"; };
-		55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = EmpireStateTowerWidget.intentdefinition; sourceTree = "<group>"; };
 		55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55F64AE62AAFD84C00A5CCE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55F64AF52AB13A2400A5CCE5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */,
+				55F64AF92AB13A5F00A5CCE5 /* SwiftSoup in Frameworks */,
 				55F64ADB2AAFD84A00A5CCE5 /* WidgetKit.framework in Frameworks */,
+				55F64AF42AB12DB900A5CCE5 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				55D512C72A9EDDCF00044A4E /* Tower.swift */,
+				55F64AF52AB13A2400A5CCE5 /* NetworkError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,7 +205,6 @@
 			children = (
 				55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */,
 				55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */,
-				55F64AE32AAFD84A00A5CCE5 /* EmpireStateTowerWidget.intentdefinition */,
 				55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */,
 				55F64AE62AAFD84C00A5CCE5 /* Info.plist */,
 			);
@@ -264,6 +268,10 @@
 			dependencies = (
 			);
 			name = EmpireStateTowerWidgetExtension;
+			packageProductDependencies = (
+				55F64AF32AB12DB900A5CCE5 /* ComposableArchitecture */,
+				55F64AF82AB13A5F00A5CCE5 /* SwiftSoup */,
+			);
 			productName = EmpireStateTowerWidgetExtension;
 			productReference = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -346,12 +354,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55F64AE82AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */,
 				55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */,
 				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
 				5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
 				55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */,
+				55F64AF62AB13A2400A5CCE5 /* NetworkError.swift in Sources */,
 				55D512DE2AA528DE00044A4E /* CurrentTowerClient.swift in Sources */,
 				55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */,
 			);
@@ -373,7 +381,7 @@
 				55F64AE02AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift in Sources */,
 				55F64AE22AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift in Sources */,
 				55F64AF12AAFD8CA00A5CCE5 /* CurrentTowerClient.swift in Sources */,
-				55F64AE72AAFD84C00A5CCE5 /* EmpireStateTowerWidget.intentdefinition in Sources */,
+				55F64AF72AB13A2400A5CCE5 /* NetworkError.swift in Sources */,
 				55F64AF02AAFD8C500A5CCE5 /* Tower.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,7 +641,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -660,7 +668,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -731,6 +739,16 @@
 			productName = ComposableArchitecture;
 		};
 		55D512CC2A9FF8A600044A4E /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		55F64AF32AB12DB900A5CCE5 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		55F64AF82AB13A5F00A5CCE5 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
