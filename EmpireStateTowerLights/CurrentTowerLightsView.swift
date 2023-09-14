@@ -176,10 +176,10 @@ struct TowerView: View {
                         Text(tower.content ?? "")
                             .font(isMonthlyView ? .caption : .headline)
                     }
+                    .padding()
                     .background(Color.black.opacity(0.3))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-                .padding()
             }
         }
     }
