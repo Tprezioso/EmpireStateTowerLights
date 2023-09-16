@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct CurrentTowerLightsFeature: Reducer {
-    
     struct State: Equatable {
         @BindingState var dateSelection: Days = .today
         var towers = [Tower]()
@@ -60,26 +59,26 @@ struct CurrentTowerLightsFeature: Reducer {
             case let .didReceiveData(towers):
                 state.towers = towers
                 return .none
-            
+                
             case .swipedScreenLeft:
                 switch state.dateSelection {
                     
                 case .yesterday:
                     state.dateSelection = .today
                 case .today:
-                     state.dateSelection = .tomorrow
+                    state.dateSelection = .tomorrow
                 case .tomorrow:
                     state.dateSelection = .tomorrow
                 }
                 return .none
-            
+                
             case .swipedScreenRight:
                 switch state.dateSelection {
                     
                 case .yesterday:
                     state.dateSelection = .yesterday
                 case .today:
-                     state.dateSelection = .yesterday
+                    state.dateSelection = .yesterday
                 case .tomorrow:
                     state.dateSelection = .today
                 }
@@ -138,53 +137,14 @@ struct CurrentTowerLightsView: View {
 struct CurrentTowerLightsView_Previews: PreviewProvider {
     static var previews: some View {
         CurrentTowerLightsView(
-            store: .init(initialState: .init(),
-                         reducer: {
-                             CurrentTowerLightsFeature()
-                         }))
+            store: .init(
+                initialState: .init(),
+                reducer: {
+                    CurrentTowerLightsFeature()
+                }
+            )
+        )
     }
 }
 
 
-struct TowerView: View {
-    let tower: Tower?
-    var isMonthlyView: Bool = false
-    
-    var body: some View {
-        if let tower = tower {
-            ZStack {
-                AsyncImage(url: URL(string: tower.image!)) { phase in
-                    if let image = phase.image {
-                        GeometryReader { geo in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: geo.size.width, height: geo.size.height)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                        }
-                    } else if phase.error != nil {
-                        Image(systemName: "building")
-                    } else {
-                        ProgressView().progressViewStyle(.circular)
-                            .controlSize(.large)
-                    }
-                }
-                
-                VStack(alignment: .leading, spacing: 12) {
-                    Spacer()
-                    VStack(alignment: .leading) {
-                        Text(tower.light ?? "")
-                            .font( isMonthlyView ? .title3 : .largeTitle)
-                        Text("\(tower.day ?? "") \(tower.date ?? "")")
-                            .font(isMonthlyView ? .caption : .title)
-                        Text(tower.content ?? "")
-                            .font(isMonthlyView ? .caption : .headline)
-                    }
-                    .padding()
-                    .background(Color.black.opacity(0.3))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
-            }
-        }
-    }
-}

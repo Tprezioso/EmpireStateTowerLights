@@ -23,8 +23,6 @@ struct Provider: TimelineProvider {
         let entry = SimpleEntry(date: Date(), tower: viewStore.tower!)
             completion(entry)
     }
-    
-    
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task { @MainActor in
@@ -56,34 +54,36 @@ struct EmpireStateTowerWidgetEntryView : View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            
             ZStack {
                 if let uiImage = viewStore.imageData {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    GeometryReader { geo in
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geo.size.width, height: geo.size.height)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
                 } else {
                     Color.black
                 }
                 
                 VStack {
                     Spacer()
-                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
-                        
+                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")                        
                         .foregroundColor(viewStore.imageData == nil ? .black : .white)
                         .font(.subheadline)
                         .bold()
-                        .padding(.horizontal, viewStore.imageData == nil ? 0 : 10)
+                        .padding(.horizontal, viewStore.imageData != nil ? 0 : 10)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .background(Color.black.opacity(0.3))
                         .onAppear { viewStore.send(.onAppear) }
                 }
-                
                 .padding()
             }
         }
     }
 }
+
 
 struct EmpireStateTowerWidget: Widget {
     let kind: String = "EmpireStateTowerWidget"

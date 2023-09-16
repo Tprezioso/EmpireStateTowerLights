@@ -9,7 +9,6 @@ import SwiftUI
 import ComposableArchitecture
 
 struct MonthlyTowerLightsFeature: Reducer {
-    
     struct State: Equatable {
         var towers = [Tower]()
     }
@@ -85,33 +84,5 @@ struct ContentView_Previews: PreviewProvider {
         MonthlyTowerLightsView(store: .init(initialState: MonthlyTowerLightsFeature.State()) {
             MonthlyTowerLightsFeature()
         })
-    }
-}
-
-
-struct NightBackground: ViewModifier {
-    
-    func body(content: Content) -> some View {
-        ZStack {
-            LinearGradient(
-                gradient:
-                    Gradient(
-                        colors: [
-                            .indigo,
-                            .black
-                        ]
-                    ),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            content
-        }
-    }
-}
-
-extension View {
-    func nightBackground() -> some View {
-        modifier(NightBackground())
     }
 }

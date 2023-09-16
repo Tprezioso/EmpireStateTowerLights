@@ -37,18 +37,22 @@ extension CurrentTowerClient: DependencyKey {
                 var todayImage: String = try doc.getElementsByClass("background-image-wrapper").attr("style")
                 todayImage = todayImage.slice(from: "(", to: ")") ?? ""
                 let today: [Element]? = try doc.getElementsByClass("is-today").array()
-                let dayLight: String? = try today?.first?.select("h3").text()
+                var dayLight: String? = try today?.first?.select("h3").text()
                 let dayDate: String? = try today?.first?.select("h2").text()
                 let dayDescription: String? = try today?.first?.select("p").text()
 
                 for today in notToday {
                     let img: String? = try today.select("img").attr("src")
-                    let light: String = try today.select("h3").text()
+                    var light: String = try today.select("h3").text()
                     let day: String = try today.select("h2").text()
                     let content: String = try today.select("p").text()
+                    
                     towers.append(Tower(day: day, image: img ?? "", light: light, content: content))
                 }
                 
+                if dayLight?.byWords.last?.lowercased() == "color" {
+                    dayLight = dayLight?.components(separatedBy: " ").dropLast().joined(separator: " ")
+                }
                 towers.insert(Tower(day: dayDate,image: baseURL + todayImage, light: dayLight, content: dayDescription), at: 1)
 
                 return towers
@@ -94,6 +98,16 @@ extension String {
                 String(self[substringFrom..<substringTo])
             }
         }
+    }
+}
+
+extension StringProtocol { // for Swift 4 you need to add the constrain `where Index == String.Index`
+    var byWords: [SubSequence] {
+        var byWords: [SubSequence] = []
+        enumerateSubstrings(in: startIndex..., options: .byWords) { _, range, _, _ in
+            byWords.append(self[range])
+        }
+        return byWords
     }
 }
 // TODO: widget idea with = square.3.layers.3d and vertical line for widget

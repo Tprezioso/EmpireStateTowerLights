@@ -14,6 +14,8 @@
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
 		5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */; };
 		5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5584EC382A9EC16E00781AD5 /* ComposableArchitecture */; };
+		55A01F812AB51D890064E7E3 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F802AB51D890064E7E3 /* Modifiers.swift */; };
+		55A01F832AB520610064E7E3 /* TowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F822AB520610064E7E3 /* TowerView.swift */; };
 		55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
 		55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */; };
 		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
@@ -73,6 +75,8 @@
 		5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerLightsView.swift; sourceTree = "<group>"; };
 		5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		55A01F802AB51D890064E7E3 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		55A01F822AB520610064E7E3 /* TowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerView.swift; sourceTree = "<group>"; };
 		55D512C72A9EDDCF00044A4E /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerClient.swift; sourceTree = "<group>"; };
 		55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpireStateTowerLightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,8 +168,10 @@
 			children = (
 				5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */,
 				5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */,
-				5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */,
 				55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */,
+				5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */,
+				55A01F852AB520E00064E7E3 /* Modifiers */,
+				55A01F842AB520CA0064E7E3 /* View */,
 				5508D6DC2AA8061700E8F610 /* Models */,
 				5508D6DD2AA8062900E8F610 /* Clients */,
 				5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */,
@@ -180,6 +186,22 @@
 				5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55A01F842AB520CA0064E7E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55A01F822AB520610064E7E3 /* TowerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55A01F852AB520E00064E7E3 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				55A01F802AB51D890064E7E3 /* Modifiers.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		55D512D32AA4C61200044A4E /* EmpireStateTowerLightsTests */ = {
@@ -358,9 +380,11 @@
 				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
 				5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
+				55A01F832AB520610064E7E3 /* TowerView.swift in Sources */,
 				55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */,
 				55F64AF62AB13A2400A5CCE5 /* NetworkError.swift in Sources */,
 				55D512DE2AA528DE00044A4E /* CurrentTowerClient.swift in Sources */,
+				55A01F812AB51D890064E7E3 /* Modifiers.swift in Sources */,
 				55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
