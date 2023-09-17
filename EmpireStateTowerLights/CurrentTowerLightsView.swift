@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct CurrentTowerLightsFeature: Reducer {
     struct State: Equatable {
+        @PresentationState var alert: AlertState<Action.Alert>?
         @BindingState var dateSelection: Days = .today
         var towers = [Tower]()
         
@@ -35,6 +36,11 @@ struct CurrentTowerLightsFeature: Reducer {
         case didReceiveData([Tower])
         case swipedScreenLeft
         case swipedScreenRight
+        case loadingError
+        case alert(PresentationAction<Alert>)
+        enum Alert {
+            case reloadData
+        }
     }
     
     @Dependency(\.currentTowerClient) var currentTowerClient
@@ -52,7 +58,7 @@ struct CurrentTowerLightsFeature: Reducer {
                         }
                         await send(.didReceiveData(towers))
                     } catch {
-                        
+                        await send(.loadingError)
                     }
                 }
                 
@@ -83,8 +89,31 @@ struct CurrentTowerLightsFeature: Reducer {
                     state.dateSelection = .today
                 }
                 return .none
+                       
+            case .alert(.presented(.reloadData)):
+                return .run { send in
+                    await send(.onAppear)
+                }
+            
+            case .alert(.dismiss):
+                return .none
+            
+            case .loadingError:
+                state.alert = AlertState {
+                    TextState("There seems to be a networking issue. Try again later")
+                } actions: {
+                    ButtonState(role: .none, action: .reloadData) {
+                        TextState("Reload")
+                    }
+                    
+                    ButtonState(role: .cancel) {
+                        TextState("Cancel")
+                    }
+                }
+                return .none
             }
         }
+        .ifLet(\.$alert, action: /Action.alert)
     }
 }
 
@@ -95,42 +124,41 @@ struct CurrentTowerLightsView: View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
                 VStack(spacing: 20) {
-                        Picker("Pick your day", selection: viewStore.$dateSelection) {
-                            ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
-                                Text($0.description).tag($0)
-                            }
-                        }.pickerStyle(.segmented)
-
-                        if !viewStore.towers.isEmpty {
-                            switch viewStore.dateSelection {
-                            case .yesterday:
-                                TowerView(tower: viewStore.towers[0])
-                            case .today:
-                                TowerView(tower: viewStore.towers[1])
-                            case .tomorrow:
-                                TowerView(tower: viewStore.towers[2])
+                    Picker("Pick your day", selection: viewStore.$dateSelection) {
+                        ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
+                            Text($0.description).tag($0)
+                        }
+                    }.pickerStyle(.segmented)
+                    
+                    if !viewStore.towers.isEmpty {
+                        switch viewStore.dateSelection {
+                        case .yesterday:
+                            TowerView(tower: viewStore.towers[0])
+                        case .today:
+                            TowerView(tower: viewStore.towers[1])
+                        case .tomorrow:
+                            TowerView(tower: viewStore.towers[2])
+                        }
+                    }
+                    Spacer()
+                }
+                .gesture(
+                    DragGesture()
+                        .onEnded { value in
+                            if value.startLocation.x > value.location.x {
+                                viewStore.send(.swipedScreenLeft)
+                            } else {
+                                viewStore.send(.swipedScreenRight)
                             }
                         }
-                        Spacer()
-                    }
-                    .gesture(
-                        DragGesture()
-                            .onEnded { value in
-                                if value.startLocation.x > value.location.x {
-                                    viewStore.send(.swipedScreenLeft)
-                                } else {
-                                    viewStore.send(.swipedScreenRight)
-                                }
-                            }
-                    )
-                    .navigationTitle("Current Lights")
-                    .padding()
-                    .onAppear { viewStore.send(.onAppear) }
-                    .nightBackground()
-                    .preferredColorScheme(.dark)
-                }
-            }
-        
+                )
+                .navigationTitle("Current Lights")
+                .padding()
+                .onAppear { viewStore.send(.onAppear) }
+                .nightBackground()
+                .preferredColorScheme(.dark)
+            }.alert(store: self.store.scope(state: \.$alert, action: {.alert($0)}))
+        }
     }
 }
 
@@ -146,5 +174,3 @@ struct CurrentTowerLightsView_Previews: PreviewProvider {
         )
     }
 }
-
-

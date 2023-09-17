@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct MonthlyTowerLightsFeature: Reducer {
     struct State: Equatable {
+        @PresentationState var alert: AlertState<Action.Alert>?
         var towers = [Tower]()
     }
     
@@ -17,6 +18,11 @@ struct MonthlyTowerLightsFeature: Reducer {
         case binding(BindingAction<State>)
         case onAppear
         case didReceiveData([Tower])
+        case loadingError
+        case alert(PresentationAction<Alert>)
+        enum Alert {
+            case reloadData
+        }
     }
     
     @Dependency(\.towerClient) var towerClient
@@ -35,15 +41,38 @@ struct MonthlyTowerLightsFeature: Reducer {
                         }
                         await send(.didReceiveData(towers))
                     } catch {
-                        
+                        await send(.loadingError)
                     }
                 }
                 
             case let .didReceiveData(towers):
                 state.towers = towers
                 return .none
+            
+            case .alert(.presented(.reloadData)):
+                return .run { send in
+                    await send(.onAppear)
+                }
+            
+            case .alert(.dismiss):
+                return .none
+            
+            case .loadingError:
+                state.alert = AlertState {
+                    TextState("There seems to be a networking issue. Try again later")
+                } actions: {
+                    ButtonState(role: .none, action: .reloadData) {
+                        TextState("Reload")
+                    }
+                    
+                    ButtonState(role: .cancel) {
+                        TextState("Cancel")
+                    }
+                }
+                return .none
             }
         }
+        .ifLet(\.$alert, action: /Action.alert)
     }
 }
 
@@ -74,7 +103,7 @@ struct MonthlyTowerLightsView: View {
                 .padding()
                 .nightBackground()
                 .preferredColorScheme(.dark)
-            }
+            }.alert(store: self.store.scope(state: \.$alert, action: {.alert($0)}))
         }
     }
 }
