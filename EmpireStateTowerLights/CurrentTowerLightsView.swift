@@ -119,6 +119,7 @@ struct CurrentTowerLightsFeature: Reducer {
 
 struct CurrentTowerLightsView: View {
     let store: StoreOf<CurrentTowerLightsFeature>
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
@@ -154,10 +155,25 @@ struct CurrentTowerLightsView: View {
                 )
                 .navigationTitle("Current Lights")
                 .padding()
-                .onAppear { viewStore.send(.onAppear) }
+                .onAppear {
+                    viewStore.send(.onAppear)
+                    
+                }
                 .nightBackground()
                 .preferredColorScheme(.dark)
             }.alert(store: self.store.scope(state: \.$alert, action: {.alert($0)}))
+            .onChange(of: scenePhase) { newPhase in
+                switch newPhase {
+                case .background:
+                    break
+                case .inactive:
+                    break
+                case .active:
+                    viewStore.send(.onAppear)
+                @unknown default:
+                    break
+                }
+            }
         }
     }
 }

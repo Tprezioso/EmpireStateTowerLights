@@ -27,7 +27,8 @@ struct TabBarFeature: Reducer {
             case let .selectedTabChanged(tab):
                 state.selectedTab = tab
                 return .none
-                
+            
+            //TODO: - Scene Phase should be reloaded from here instead of each view
             case .currentTowerTab, .monthlyTowerTab:
                 return .none
             }

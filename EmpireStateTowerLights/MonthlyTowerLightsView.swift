@@ -78,6 +78,7 @@ struct MonthlyTowerLightsFeature: Reducer {
 
 struct MonthlyTowerLightsView: View {
     let store: StoreOf<MonthlyTowerLightsFeature>
+    @Environment(\.scenePhase) private var scenePhase
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -104,6 +105,18 @@ struct MonthlyTowerLightsView: View {
                 .nightBackground()
                 .preferredColorScheme(.dark)
             }.alert(store: self.store.scope(state: \.$alert, action: {.alert($0)}))
+            .onChange(of: scenePhase) { newPhase in
+                switch newPhase {
+                case .background:
+                    break
+                case .inactive:
+                    break
+                case .active:
+                    viewStore.send(.onAppear)
+                @unknown default:
+                    break
+                }
+            }
         }
     }
 }
