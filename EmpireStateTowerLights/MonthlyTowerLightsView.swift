@@ -12,6 +12,7 @@ struct MonthlyTowerLightsFeature: Reducer {
     struct State: Equatable {
         @PresentationState var alert: AlertState<Action.Alert>?
         var towers = [Tower]()
+        var monthName = Date().formatted(.dateTime.month(.wide))
     }
     
     enum Action: Equatable, BindableAction {
@@ -98,7 +99,7 @@ struct MonthlyTowerLightsView: View {
                     }
                     Spacer()
                 }
-                .navigationTitle("Lights This Month")
+                .navigationTitle("Lights for \(viewStore.monthName)")
                 .onAppear { viewStore.send(.onAppear) }
                 .foregroundColor(.white)
                 .padding()

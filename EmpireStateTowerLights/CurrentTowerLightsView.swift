@@ -156,8 +156,7 @@ struct CurrentTowerLightsView: View {
                 .navigationTitle("Current Lights")
                 .padding()
                 .onAppear {
-                    viewStore.send(.onAppear)
-                    
+                    viewStore.send(.onAppear)                    
                 }
                 .nightBackground()
                 .preferredColorScheme(.dark)
