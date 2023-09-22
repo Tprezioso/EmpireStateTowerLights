@@ -68,7 +68,6 @@ struct CurrentTowerLightsFeature: Reducer {
                 
             case .swipedScreenLeft:
                 switch state.dateSelection {
-                    
                 case .yesterday:
                     state.dateSelection = .today
                 case .today:
@@ -79,8 +78,7 @@ struct CurrentTowerLightsFeature: Reducer {
                 return .none
                 
             case .swipedScreenRight:
-                switch state.dateSelection {
-                    
+                switch state.dateSelection {                    
                 case .yesterday:
                     state.dateSelection = .yesterday
                 case .today:
@@ -156,7 +154,7 @@ struct CurrentTowerLightsView: View {
                 .navigationTitle("Current Lights")
                 .padding()
                 .onAppear {
-                    viewStore.send(.onAppear)                    
+                    viewStore.send(.onAppear)
                 }
                 .nightBackground()
                 .preferredColorScheme(.dark)
