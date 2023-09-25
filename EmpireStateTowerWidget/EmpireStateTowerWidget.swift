@@ -64,7 +64,7 @@ struct EmpireStateTowerWidgetEntryView : View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 } else {
-                    Color.black
+                    Image("defaultBuilding")
                 }
                 
                 VStack {
@@ -95,9 +95,27 @@ struct EmpireStateTowerWidget: Widget {
         ) { _ in
             EmpireStateTowerWidgetEntryView(store: store)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Empire State Building Lights")
+        .description("I wonder what color the lights are tonight?")
         .supportedFamilies([.systemSmall])
+        .contentMarginsDisabledIfAvailable()
+    }
+}
+
+extension WidgetConfiguration
+{
+    func contentMarginsDisabledIfAvailable() -> some WidgetConfiguration
+    {
+        #if compiler(>=5.9) // Xcode 15
+            if #available(iOSApplicationExtension 17.0, *) {
+                return self.contentMarginsDisabled()
+            }
+            else {
+                return self
+            }
+        #else
+            return self
+        #endif
     }
 }
 
@@ -109,7 +127,6 @@ struct EmpireStateTowerWidget_Previews: PreviewProvider {
 }
 
 struct CurrentTowerWidgetFeature: Reducer {
-    
     struct State: Equatable {
         var tower: Tower?
         var imageData: UIImage?
