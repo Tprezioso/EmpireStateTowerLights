@@ -16,6 +16,7 @@
 		5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5584EC382A9EC16E00781AD5 /* ComposableArchitecture */; };
 		55A01F812AB51D890064E7E3 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F802AB51D890064E7E3 /* Modifiers.swift */; };
 		55A01F832AB520610064E7E3 /* TowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F822AB520610064E7E3 /* TowerView.swift */; };
+		55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4F6F32AC51A9800677B48 /* SplashScreen.swift */; };
 		55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
 		55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */; };
 		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
@@ -77,6 +78,7 @@
 		5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55A01F802AB51D890064E7E3 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		55A01F822AB520610064E7E3 /* TowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerView.swift; sourceTree = "<group>"; };
+		55C4F6F32AC51A9800677B48 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		55D512C72A9EDDCF00044A4E /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerClient.swift; sourceTree = "<group>"; };
 		55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpireStateTowerLightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				55A01F822AB520610064E7E3 /* TowerView.swift */,
+				55C4F6F32AC51A9800677B48 /* SplashScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
 				55A01F832AB520610064E7E3 /* TowerView.swift in Sources */,
 				55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */,
+				55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */,
 				55F64AF62AB13A2400A5CCE5 /* NetworkError.swift in Sources */,
 				55D512DE2AA528DE00044A4E /* CurrentTowerClient.swift in Sources */,
 				55A01F812AB51D890064E7E3 /* Modifiers.swift in Sources */,
