@@ -14,8 +14,11 @@
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
 		5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */; };
 		5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5584EC382A9EC16E00781AD5 /* ComposableArchitecture */; };
-		55A01F812AB51D890064E7E3 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F802AB51D890064E7E3 /* Modifiers.swift */; };
+		55A01F812AB51D890064E7E3 /* NIghtBackgroundModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F802AB51D890064E7E3 /* NIghtBackgroundModifiers.swift */; };
 		55A01F832AB520610064E7E3 /* TowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F822AB520610064E7E3 /* TowerView.swift */; };
+		55A0F07C2AC62BBF009D42DB /* Empire.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A0F07B2AC62BBF009D42DB /* Empire.json */; };
+		55A0F0802AC62CEA009D42DB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A0F07F2AC62CEA009D42DB /* LottieView.swift */; };
+		55A0F0822AC62D0D009D42DB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 55A0F0812AC62D0D009D42DB /* Lottie */; };
 		55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4F6F32AC51A9800677B48 /* SplashScreen.swift */; };
 		55D512C82A9EDDCF00044A4E /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C72A9EDDCF00044A4E /* Tower.swift */; };
 		55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */; };
@@ -76,8 +79,11 @@
 		5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerLightsView.swift; sourceTree = "<group>"; };
 		5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		55A01F802AB51D890064E7E3 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		55A01F802AB51D890064E7E3 /* NIghtBackgroundModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIghtBackgroundModifiers.swift; sourceTree = "<group>"; };
 		55A01F822AB520610064E7E3 /* TowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerView.swift; sourceTree = "<group>"; };
+		55A0F07A2AC625FE009D42DB /* EmpireModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EmpireModule; path = EmpireStateTowerLights/EmpireModule; sourceTree = "<group>"; };
+		55A0F07B2AC62BBF009D42DB /* Empire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empire.json; sourceTree = "<group>"; };
+		55A0F07F2AC62CEA009D42DB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		55C4F6F32AC51A9800677B48 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		55D512C72A9EDDCF00044A4E /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerClient.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 			files = (
 				5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */,
 				55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */,
+				55A0F0822AC62D0D009D42DB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +154,7 @@
 		5584EC1D2A9EB39A00781AD5 = {
 			isa = PBXGroup;
 			children = (
+				55A0F07A2AC625FE009D42DB /* EmpireModule */,
 				5584EC282A9EB39A00781AD5 /* EmpireStateTowerLights */,
 				55D512D32AA4C61200044A4E /* EmpireStateTowerLightsTests */,
 				55F64ADE2AAFD84A00A5CCE5 /* EmpireStateTowerWidget */,
@@ -172,6 +180,7 @@
 				5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */,
 				55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */,
 				5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */,
+				55A0F07D2AC62BC5009D42DB /* SplashAnimation */,
 				55A01F852AB520E00064E7E3 /* Modifiers */,
 				55A01F842AB520CA0064E7E3 /* View */,
 				5508D6DC2AA8061700E8F610 /* Models */,
@@ -202,8 +211,18 @@
 		55A01F852AB520E00064E7E3 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				55A01F802AB51D890064E7E3 /* Modifiers.swift */,
+				55A01F802AB51D890064E7E3 /* NIghtBackgroundModifiers.swift */,
 			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		55A0F07D2AC62BC5009D42DB /* SplashAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				55A0F07B2AC62BBF009D42DB /* Empire.json */,
+				55A0F07F2AC62CEA009D42DB /* LottieView.swift */,
+			);
+			name = SplashAnimation;
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
@@ -257,6 +276,7 @@
 			packageProductDependencies = (
 				5584EC382A9EC16E00781AD5 /* ComposableArchitecture */,
 				55D512CC2A9FF8A600044A4E /* SwiftSoup */,
+				55A0F0812AC62D0D009D42DB /* Lottie */,
 			);
 			productName = EmpireStateTowerLights;
 			productReference = 5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */;
@@ -335,6 +355,7 @@
 			packageReferences = (
 				5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 5584EC272A9EB39A00781AD5 /* Products */;
 			projectDirPath = "";
@@ -352,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A0F07C2AC62BBF009D42DB /* Empire.json in Resources */,
 				5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */,
 				5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */,
 			);
@@ -388,8 +410,9 @@
 				55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */,
 				55F64AF62AB13A2400A5CCE5 /* NetworkError.swift in Sources */,
 				55D512DE2AA528DE00044A4E /* CurrentTowerClient.swift in Sources */,
-				55A01F812AB51D890064E7E3 /* Modifiers.swift in Sources */,
+				55A01F812AB51D890064E7E3 /* NIghtBackgroundModifiers.swift in Sources */,
 				55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */,
+				55A0F0802AC62CEA009D42DB /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +773,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.2;
+			};
+		};
 		55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
@@ -765,6 +796,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		55A0F0812AC62D0D009D42DB /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		55D512CC2A9FF8A600044A4E /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
