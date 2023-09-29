@@ -8,16 +8,17 @@
 import Foundation
 import SwiftSoup
 import ComposableArchitecture
+import Models
 
-struct CurrentTowerClient {
-    var getCurrentTowerData:() async throws -> [Tower]?
+public struct CurrentTowerClient {
+   public var getCurrentTowerData:() async throws -> [Tower]?
 }
 
 extension CurrentTowerClient: DependencyKey {
-    static let baseURL = "https://www.esbnyc.com"
-    static let calendarEndPoint = "/about/tower-lights"
+    public static let baseURL = "https://www.esbnyc.com"
+    public static let calendarEndPoint = "/about/tower-lights"
     
-    static var liveValue = CurrentTowerClient(
+   public static var liveValue = CurrentTowerClient(
         getCurrentTowerData: {
             guard let url = URL(string: baseURL + calendarEndPoint) else { throw NetworkError.invalidURL }
             
@@ -65,7 +66,7 @@ extension CurrentTowerClient: DependencyKey {
 }
 
 extension CurrentTowerClient: TestDependencyKey {
-    static var previewValue = CurrentTowerClient(getCurrentTowerData: {
+     public static var previewValue = CurrentTowerClient(getCurrentTowerData: {
         return [
             Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
             Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
@@ -73,7 +74,7 @@ extension CurrentTowerClient: TestDependencyKey {
         ]
     })
     
-    static var testValue = CurrentTowerClient(getCurrentTowerData: {
+    public static var testValue = CurrentTowerClient(getCurrentTowerData: {
         return [
             Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
             Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
@@ -84,7 +85,7 @@ extension CurrentTowerClient: TestDependencyKey {
 }
 
 extension DependencyValues {
-    var currentTowerClient: CurrentTowerClient {
+    public var currentTowerClient: CurrentTowerClient {
         get { self[CurrentTowerClient.self] }
         set { self[CurrentTowerClient.self] = newValue }
     }
@@ -110,4 +111,3 @@ extension StringProtocol { // for Swift 4 you need to add the constrain `where I
         return byWords
     }
 }
-// TODO: widget idea with = square.3.layers.3d and vertical line for widget

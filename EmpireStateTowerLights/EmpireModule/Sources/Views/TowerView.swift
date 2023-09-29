@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Models
 
-struct TowerView: View {
-    let tower: Tower?
-    var isMonthlyView: Bool = false
+public struct TowerView: View {
+    public var tower: Models.Tower?
+    public var isMonthlyView: Bool = false
     
-    var body: some View {
+    public var body: some View {
         if let tower = tower {
             ZStack {
                 AsyncImage(url: URL(string: tower.image!)) { phase in
@@ -51,8 +52,8 @@ struct TowerView: View {
     }
 }
 
-struct TowerView_Previews: PreviewProvider {
-    static var previews: some View {
-        TowerView(tower: Tower.currentPreview.first)
-    }
-}
+//struct TowerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TowerView(tower: Tower.currentPreview.first)
+//    }
+//}

@@ -9,6 +9,8 @@ import WidgetKit
 import SwiftUI
 import Intents
 import ComposableArchitecture
+import CurrentTowerFeature
+import Models
 
 struct Provider: TimelineProvider {
     let viewStore: ViewStore<CurrentTowerWidgetFeature.State, CurrentTowerWidgetFeature.Action>
