@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct NightBackground: ViewModifier {
-    func body(content: Content) -> some View {
+public struct NightBackground: ViewModifier {
+   public func body(content: Content) -> some View {
         ZStack {
             LinearGradient(
                 gradient:
@@ -28,7 +28,7 @@ struct NightBackground: ViewModifier {
 }
 
 extension View {
-    func nightBackground() -> some View {
+   public func nightBackground() -> some View {
         modifier(NightBackground())
     }
 }

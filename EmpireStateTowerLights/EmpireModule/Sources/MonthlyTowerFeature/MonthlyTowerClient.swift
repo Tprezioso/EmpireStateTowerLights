@@ -8,6 +8,7 @@
 import Foundation
 import SwiftSoup
 import ComposableArchitecture
+import Models
 
 struct MonthlyTowerClient {
     

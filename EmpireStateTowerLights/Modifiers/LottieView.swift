@@ -8,14 +8,14 @@
 import SwiftUI
 import Lottie
 
-struct LottieView: UIViewRepresentable {
+public struct LottieView: UIViewRepresentable {
     var name: String
     var loopMode: LottieLoopMode = .playOnce
     var contentMode: UIView.ContentMode = .scaleAspectFit
     @Binding var isShowing: Bool
     let animationView = LottieAnimationView()
 
-    func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+    public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
         view.subviews.forEach({ $0.removeFromSuperview() })
        
@@ -33,7 +33,7 @@ struct LottieView: UIViewRepresentable {
         return view
     }
 
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
+    public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
         animationView.play { (finished) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isShowing = false
