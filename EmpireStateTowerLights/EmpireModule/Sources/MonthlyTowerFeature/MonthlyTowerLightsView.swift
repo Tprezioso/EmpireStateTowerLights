@@ -10,26 +10,28 @@ import ComposableArchitecture
 import Models
 import TowerViews
 
-struct MonthlyTowerLightsFeature: Reducer {
-    struct State: Equatable {
+public struct MonthlyTowerLightsFeature: Reducer {
+    public init() {}
+    public struct State: Equatable {
+        public init() {}
         @PresentationState var alert: AlertState<Action.Alert>?
         var towers = [Tower]()
         var monthName = Date().formatted(.dateTime.month(.wide))
     }
     
-    enum Action: Equatable, BindableAction {
+   public enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case onAppear
         case didReceiveData([Tower])
         case loadingError
         case alert(PresentationAction<Alert>)
-        enum Alert {
+        public enum Alert {
             case reloadData
         }
     }
     
     @Dependency(\.towerClient) var towerClient
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
             switch action {
@@ -79,15 +81,18 @@ struct MonthlyTowerLightsFeature: Reducer {
     }
 }
 
-struct MonthlyTowerLightsView: View {
-    let store: StoreOf<MonthlyTowerLightsFeature>
+public struct MonthlyTowerLightsView: View {
+    public init(store: StoreOf<MonthlyTowerLightsFeature>) {
+        self.store = store
+    }
+    public let store: StoreOf<MonthlyTowerLightsFeature>
     @Environment(\.scenePhase) private var scenePhase
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
-    var body: some View {
+    public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
                 VStack {

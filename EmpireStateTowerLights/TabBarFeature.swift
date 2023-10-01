@@ -7,6 +7,8 @@
 
 import ComposableArchitecture
 import SwiftUI
+import CurrentTowerFeature
+import MonthlyTowerFeature
 
 struct TabBarFeature: Reducer {
     struct State: Equatable {
@@ -54,7 +56,7 @@ struct TabBarView: View {
     var body: some View {
         WithViewStore(self.store, observe: \.selectedTab) { viewStore in
             TabView(selection: viewStore.binding(send: TabBarFeature.Action.selectedTabChanged)) {
-                CurrentTowerLightsView(
+                 CurrentTowerLightsView(
                     store: self.store.scope(
                         state: \.currentTowerTab,
                         action: TabBarFeature.Action.currentTowerTab

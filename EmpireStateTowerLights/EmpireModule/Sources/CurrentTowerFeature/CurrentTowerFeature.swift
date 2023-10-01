@@ -8,18 +8,20 @@
 import SwiftUI
 import ComposableArchitecture
 import Models
-import Views
+import TowerViews
 
 public struct CurrentTowerLightsFeature: Reducer {
+    public init() {}
     public struct State: Equatable {
+        public init() {}
         @PresentationState var alert: AlertState<Action.Alert>?
         @BindingState var dateSelection: Days = .today
         var towers = [Tower]()
         
-        enum Days: CustomStringConvertible, Hashable, CaseIterable {
+       public enum Days: CustomStringConvertible, Hashable, CaseIterable {
             case yesterday, today, tomorrow
             
-            var description: String {
+           public var description: String {
                 switch self {
                 case .yesterday:
                     return "Yesterday"
@@ -117,11 +119,14 @@ public struct CurrentTowerLightsFeature: Reducer {
     }
 }
 
-struct CurrentTowerLightsView: View {
-    let store: StoreOf<CurrentTowerLightsFeature>
+public struct CurrentTowerLightsView: View {
+    public init(store: StoreOf<CurrentTowerLightsFeature>) {
+        self.store = store
+    }
+    public let store: StoreOf<CurrentTowerLightsFeature>
     @Environment(\.scenePhase) private var scenePhase
     
-    var body: some View {
+    public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
                 VStack(spacing: 20) {
@@ -177,8 +182,8 @@ struct CurrentTowerLightsView: View {
     }
 }
 
-struct CurrentTowerLightsView_Previews: PreviewProvider {
-    static var previews: some View {
+public struct CurrentTowerLightsView_Previews: PreviewProvider {
+    public static var previews: some View {
         CurrentTowerLightsView(
             store: .init(
                 initialState: .init(),

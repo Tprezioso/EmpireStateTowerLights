@@ -17,11 +17,14 @@ let package = Package(
             name: "CurrentTowerFeature",
             targets: ["CurrentTowerFeature"]),
         .library(
+            name: "MonthlyTowerFeature",
+            targets: ["MonthlyTowerFeature"]),
+        .library(
             name: "Models",
             targets: ["Models"]),
         .library(
-            name: "Views",
-            targets: ["Views"])
+            name: "TowerViews",
+            targets: ["TowerViews"])
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.0.0"),
@@ -47,7 +50,7 @@ let package = Package(
             name: "EmpireModuleTests",
             dependencies: ["EmpireModule"]),
         .target(name: "Models", path: "Sources/Models"),
-        .target(name: "Views", path: "Sources/Views"),
+        .target(name: "TowerViews", dependencies: ["Models"], path: "Sources/TowerViews"),
         .target(
             name: "CurrentTowerFeature",
             dependencies: [
@@ -56,8 +59,19 @@ let package = Package(
                             package: "swift-composable-architecture"
                         ),
                         "Models",
-                        "Views"
+                        "TowerViews"
                       ]
                ),
+        .target(
+            name: "MonthlyTowerFeature",
+            dependencies: [
+                        .product(
+                            name: "ComposableArchitecture",
+                            package: "swift-composable-architecture"
+                        ),
+                        "Models",
+                        "TowerViews"
+                      ]
+               )
     ]
 )

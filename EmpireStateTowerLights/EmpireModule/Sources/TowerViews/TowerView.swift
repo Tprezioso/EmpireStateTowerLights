@@ -9,6 +9,10 @@ import SwiftUI
 import Models
 
 public struct TowerView: View {
+    public init(tower: Models.Tower? = nil, isMonthlyView: Bool = false) {
+        self.tower = tower
+        self.isMonthlyView = isMonthlyView
+    }
     public var tower: Models.Tower?
     public var isMonthlyView: Bool = false
     

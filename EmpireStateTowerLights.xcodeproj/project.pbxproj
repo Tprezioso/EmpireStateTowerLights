@@ -3,32 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */; };
 		550F60552AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550F60542AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift */; };
 		5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */; };
-		5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */; };
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
 		5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */; };
 		5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5584EC382A9EC16E00781AD5 /* ComposableArchitecture */; };
 		558C70C72AC66B5900129614 /* CurrentTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70C62AC66B5900129614 /* CurrentTowerFeature */; };
 		558C70C92AC6EB5400129614 /* EmpireModule in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70C82AC6EB5400129614 /* EmpireModule */; };
 		558C70CB2AC6EB5400129614 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70CA2AC6EB5400129614 /* Models */; };
-		558C70CD2AC6EB5400129614 /* Views in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70CC2AC6EB5400129614 /* Views */; };
 		558C70CF2AC6F28400129614 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70CE2AC6F28400129614 /* Models */; };
 		558C70D12AC6F28800129614 /* CurrentTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70D02AC6F28800129614 /* CurrentTowerFeature */; };
-		55A01F812AB51D890064E7E3 /* NIghtBackgroundModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A01F802AB51D890064E7E3 /* NIghtBackgroundModifiers.swift */; };
 		55A0F07C2AC62BBF009D42DB /* Empire.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A0F07B2AC62BBF009D42DB /* Empire.json */; };
 		55A0F0802AC62CEA009D42DB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A0F07F2AC62CEA009D42DB /* LottieView.swift */; };
 		55A0F0822AC62D0D009D42DB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 55A0F0812AC62D0D009D42DB /* Lottie */; };
+		55A4E8C92AC78F2900199360 /* TowerViews in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8C82AC78F2900199360 /* TowerViews */; };
+		55A4E8CB2AC7907400199360 /* TowerViews in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8CA2AC7907400199360 /* TowerViews */; };
+		55A4E8D12AC7A5BE00199360 /* MonthlyTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */; };
 		55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4F6F32AC51A9800677B48 /* SplashScreen.swift */; };
-		55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */; };
 		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
 		55D512D52AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */; };
-		55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */; };
 		55F64ADB2AAFD84A00A5CCE5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */; };
 		55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */; };
 		55F64AE02AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F64ADF2AAFD84A00A5CCE5 /* EmpireStateTowerWidgetBundle.swift */; };
@@ -75,18 +73,14 @@
 		550F60542AAC1A63000A8E3B /* EmpireStateTowerCurrentLightsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerCurrentLightsTest.swift; sourceTree = "<group>"; };
 		5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpireStateTowerLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerLightsApp.swift; sourceTree = "<group>"; };
-		5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerLightsView.swift; sourceTree = "<group>"; };
 		5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		55A01F802AB51D890064E7E3 /* NIghtBackgroundModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NIghtBackgroundModifiers.swift; sourceTree = "<group>"; };
 		55A0F07A2AC625FE009D42DB /* EmpireModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EmpireModule; path = EmpireStateTowerLights/EmpireModule; sourceTree = "<group>"; };
 		55A0F07B2AC62BBF009D42DB /* Empire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empire.json; sourceTree = "<group>"; };
 		55A0F07F2AC62CEA009D42DB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		55C4F6F32AC51A9800677B48 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyTowerClient.swift; sourceTree = "<group>"; };
 		55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpireStateTowerLightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D512D42AA4C61200044A4E /* EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTEmpireStateTowerMonthLightsTestsowerLightsTests.swift; sourceTree = "<group>"; };
-		55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTowerLightsView.swift; sourceTree = "<group>"; };
 		55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmpireStateTowerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -101,13 +95,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A4E8C92AC78F2900199360 /* TowerViews in Frameworks */,
 				558C70CB2AC6EB5400129614 /* Models in Frameworks */,
 				5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */,
+				55A4E8D12AC7A5BE00199360 /* MonthlyTowerFeature in Frameworks */,
 				55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */,
 				558C70C92AC6EB5400129614 /* EmpireModule in Frameworks */,
 				55A0F0822AC62D0D009D42DB /* Lottie in Frameworks */,
 				558C70C72AC66B5900129614 /* CurrentTowerFeature in Frameworks */,
-				558C70CD2AC6EB5400129614 /* Views in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A4E8CB2AC7907400199360 /* TowerViews in Frameworks */,
 				558C70CF2AC6F28400129614 /* Models in Frameworks */,
 				55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */,
 				55F64AF92AB13A5F00A5CCE5 /* SwiftSoup in Frameworks */,
@@ -134,14 +130,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5508D6DD2AA8062900E8F610 /* Clients */ = {
-			isa = PBXGroup;
-			children = (
-				55D512C92A9FF86300044A4E /* MonthlyTowerClient.swift */,
-			);
-			path = Clients;
-			sourceTree = "<group>";
-		};
 		5584EC1D2A9EB39A00781AD5 = {
 			isa = PBXGroup;
 			children = (
@@ -169,12 +157,7 @@
 			children = (
 				5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */,
 				5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */,
-				55D512DB2AA525AA00044A4E /* CurrentTowerLightsView.swift */,
-				5584EC2B2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift */,
 				55A0F07D2AC62BC5009D42DB /* SplashAnimation */,
-				55A01F852AB520E00064E7E3 /* Modifiers */,
-				55A01F842AB520CA0064E7E3 /* View */,
-				5508D6DD2AA8062900E8F610 /* Clients */,
 				5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */,
 				5584EC2F2A9EB39B00781AD5 /* Preview Content */,
 			);
@@ -189,27 +172,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		55A01F842AB520CA0064E7E3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				55C4F6F32AC51A9800677B48 /* SplashScreen.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		55A01F852AB520E00064E7E3 /* Modifiers */ = {
-			isa = PBXGroup;
-			children = (
-				55A01F802AB51D890064E7E3 /* NIghtBackgroundModifiers.swift */,
-			);
-			path = Modifiers;
-			sourceTree = "<group>";
-		};
 		55A0F07D2AC62BC5009D42DB /* SplashAnimation */ = {
 			isa = PBXGroup;
 			children = (
 				55A0F07B2AC62BBF009D42DB /* Empire.json */,
 				55A0F07F2AC62CEA009D42DB /* LottieView.swift */,
+				55C4F6F32AC51A9800677B48 /* SplashScreen.swift */,
 			);
 			name = SplashAnimation;
 			path = Modifiers;
@@ -269,7 +237,8 @@
 				558C70C62AC66B5900129614 /* CurrentTowerFeature */,
 				558C70C82AC6EB5400129614 /* EmpireModule */,
 				558C70CA2AC6EB5400129614 /* Models */,
-				558C70CC2AC6EB5400129614 /* Views */,
+				55A4E8C82AC78F2900199360 /* TowerViews */,
+				55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */,
 			);
 			productName = EmpireStateTowerLights;
 			productReference = 5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */;
@@ -311,6 +280,7 @@
 				55F64AF82AB13A5F00A5CCE5 /* SwiftSoup */,
 				558C70CE2AC6F28400129614 /* Models */,
 				558C70D02AC6F28800129614 /* CurrentTowerFeature */,
+				55A4E8CA2AC7907400199360 /* TowerViews */,
 			);
 			productName = EmpireStateTowerWidgetExtension;
 			productReference = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */;
@@ -351,6 +321,7 @@
 				5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				55A4E8CC2AC790A700199360 /* XCLocalSwiftPackageReference "EmpireStateTowerLights/EmpireModule" */,
 			);
 			productRefGroup = 5584EC272A9EB39A00781AD5 /* Products */;
 			projectDirPath = "";
@@ -396,13 +367,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D512CA2A9FF86300044A4E /* MonthlyTowerClient.swift in Sources */,
 				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
-				5584EC2C2A9EB39A00781AD5 /* MonthlyTowerLightsView.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
 				55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */,
-				55A01F812AB51D890064E7E3 /* NIghtBackgroundModifiers.swift in Sources */,
-				55D512DC2AA525AA00044A4E /* CurrentTowerLightsView.swift in Sources */,
 				55A0F0802AC62CEA009D42DB /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +719,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		55A4E8CC2AC790A700199360 /* XCLocalSwiftPackageReference "EmpireStateTowerLights/EmpireModule" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = EmpireStateTowerLights/EmpireModule;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -797,10 +771,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
 		};
-		558C70CC2AC6EB5400129614 /* Views */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Views;
-		};
 		558C70CE2AC6F28400129614 /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
@@ -813,6 +783,18 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		55A4E8C82AC78F2900199360 /* TowerViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TowerViews;
+		};
+		55A4E8CA2AC7907400199360 /* TowerViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TowerViews;
+		};
+		55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MonthlyTowerFeature;
 		};
 		55D512CC2A9FF8A600044A4E /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
