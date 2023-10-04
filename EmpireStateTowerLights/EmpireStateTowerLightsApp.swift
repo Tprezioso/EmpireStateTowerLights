@@ -11,9 +11,14 @@ import SwiftUI
 struct EmpireStateTowerLightsApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBarView(store: .init(initialState: TabBarFeature.State()) {
-                TabBarFeature()
-            })
+            ZStack {
+                TabBarView(store: .init(initialState: TabBarFeature.State()) {
+                    TabBarFeature()
+                })
+                SplashScreen(store: .init(initialState: .init()) {
+                    SplashDomain()
+                })
+            }
         }
     }
 }

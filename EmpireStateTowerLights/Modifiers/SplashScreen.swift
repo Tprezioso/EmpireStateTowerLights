@@ -37,8 +37,9 @@ struct SplashDomain: Reducer {
     enum Action: Equatable, BindableAction {
         case binding(_ action: BindingAction<State>)
         case onAppear
+        case dismissedView
     }
-    
+    @Dependency(\.dismiss) var dismiss
     var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce<State, Action> { state, action in
@@ -49,7 +50,15 @@ struct SplashDomain: Reducer {
             case .onAppear:
                 state.isShowing = true
                 return .none
+            case .dismissedView:
+                return .run { send in
+                    await self.dismiss()
+                }
             }
+                
+        }.onChange(of: \.isShowing) { oldValue, newValue in
+            
+            
         }
     }
 }
