@@ -36,8 +36,8 @@ public struct LottieView: UIViewRepresentable {
     public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
         animationView.play { (finished) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isShowing = false
                 animationView.removeFromSuperview()
+                self.isShowing = false
             }
         }
     }

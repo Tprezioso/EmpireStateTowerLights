@@ -6,59 +6,18 @@
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct SplashScreen: View {
-    let store: StoreOf<SplashDomain>
-    
+    @Binding var isShowing: Bool
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
-            VStack {
-                LottieView(name: "Empire", loopMode: .playOnce, isShowing: viewStore.$isShowing)
-            }
-            .onAppear { viewStore.send(.onAppear) }
-            .nightBackground()
+        VStack {
+            LottieView(name: "Empire", loopMode: .playOnce, isShowing: $isShowing)
         }
+        .nightBackground()
     }
 }
 
 
 #Preview {
-    SplashScreen(store: .init(initialState: .init()) {
-        SplashDomain()
-    })
-}
-
-struct SplashDomain: Reducer {
-    struct State: Equatable {
-        @BindingState var isShowing = false
-    }
-    
-    enum Action: Equatable, BindableAction {
-        case binding(_ action: BindingAction<State>)
-        case onAppear
-        case dismissedView
-    }
-    @Dependency(\.dismiss) var dismiss
-    var body: some ReducerOf<Self> {
-        BindingReducer()
-        Reduce<State, Action> { state, action in
-            switch action {
-            case .binding:
-                return .none
-            
-            case .onAppear:
-                state.isShowing = true
-                return .none
-            case .dismissedView:
-                return .run { send in
-                    await self.dismiss()
-                }
-            }
-                
-        }.onChange(of: \.isShowing) { oldValue, newValue in
-            
-            
-        }
-    }
+    SplashScreen(isShowing: .constant(true))
 }

@@ -9,14 +9,15 @@ import SwiftUI
 
 @main
 struct EmpireStateTowerLightsApp: App {
+    @State var isShowingSplash = true
+    
     var body: some Scene {
         WindowGroup {
-            ZStack {
+            if isShowingSplash {
+                SplashScreen(isShowing: $isShowingSplash)
+            } else {
                 TabBarView(store: .init(initialState: TabBarFeature.State()) {
                     TabBarFeature()
-                })
-                SplashScreen(store: .init(initialState: .init()) {
-                    SplashDomain()
                 })
             }
         }

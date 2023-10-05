@@ -42,7 +42,6 @@ struct TabBarFeature: Reducer {
         Scope(state: \.monthlyTowerTab, action: /Action.monthlyTowerTab) {
             MonthlyTowerLightsFeature()
         }
-        
     }
 }
 
