@@ -6,8 +6,9 @@
 //
 
 import XCTest
-@testable import EmpireStateTowerLights
+@testable import MonthlyTowerFeature
 import ComposableArchitecture
+import Models
 
 @MainActor
 final class EmpireStateTowerMonthLightsTests: XCTestCase {

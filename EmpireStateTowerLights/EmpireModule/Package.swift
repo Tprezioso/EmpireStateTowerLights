@@ -11,9 +11,6 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "EmpireModule",
-            targets: ["EmpireModule"]),
-        .library(
             name: "CurrentTowerFeature",
             targets: ["CurrentTowerFeature"]),
         .library(
@@ -44,34 +41,55 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "EmpireModule"),
-        .testTarget(
-            name: "EmpireModuleTests",
-            dependencies: ["EmpireModule"]),
         .target(name: "Models", path: "Sources/Models"),
         .target(name: "TowerViews", dependencies: ["Models"], path: "Sources/TowerViews"),
         .target(
             name: "CurrentTowerFeature",
             dependencies: [
-                        .product(
-                            name: "ComposableArchitecture",
-                            package: "swift-composable-architecture"
-                        ),
-                        "Models",
-                        "TowerViews"
-                      ]
-               ),
+                .product(
+                    name: "ComposableArchitecture",
+                    package: "swift-composable-architecture"
+                ),
+                .product(
+                    name: "SwiftSoup",
+                    package: "swiftsoup"
+                ),
+                "Models",
+                "TowerViews"
+            ]
+        ),
+        .testTarget(
+            name: "EmpireStateTowerCurrentLightsTest", 
+            dependencies:
+                [
+                    "CurrentTowerFeature",
+                    "Models",
+                    "TowerViews"
+                ]
+        ),
         .target(
             name: "MonthlyTowerFeature",
             dependencies: [
-                        .product(
-                            name: "ComposableArchitecture",
-                            package: "swift-composable-architecture"
-                        ),
-                        "Models",
-                        "TowerViews"
-                      ]
-               )
+                .product(
+                    name: "ComposableArchitecture",
+                    package: "swift-composable-architecture"
+                ),
+                .product(
+                    name: "SwiftSoup",
+                    package: "swiftsoup"
+                ),
+                "Models",
+                "TowerViews"
+            ]
+        ),
+        .testTarget(
+            name: "EmpireStateTowerMonthLightsTests", 
+            dependencies:
+                [
+                    "MonthlyTowerFeature",
+                    "Models",
+                    "TowerViews"
+                ]
+        )
     ]
 )

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import CurrentTowerFeature
+@testable import CurrentTowerFeature
 import Models
 import ComposableArchitecture
 
@@ -17,10 +17,10 @@ final class EmpireStateTowerCurrentLightsTest: XCTestCase {
                                 CurrentTowerLightsFeature.State()) {
             CurrentTowerLightsFeature()
         } withDependencies: {
-            $0.towerClient = .testValue
+            $0.currentTowerClient = .testValue
         }
 
-        let testTower = Tower.currentPreview
+        let testTower = Tower.currentTowerTest
 
         await store.send(.onAppear)
 
@@ -34,7 +34,7 @@ final class EmpireStateTowerCurrentLightsTest: XCTestCase {
                                 CurrentTowerLightsFeature.State()) {
             CurrentTowerLightsFeature()
         } withDependencies: {
-            $0.towerClient = .testValue
+            $0.currentTowerClient = .testValue
         }
 
         await store.send(.swipedScreenLeft) {

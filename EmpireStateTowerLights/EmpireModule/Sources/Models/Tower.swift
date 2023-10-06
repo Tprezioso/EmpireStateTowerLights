@@ -30,7 +30,13 @@ extension Tower {
         Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
         Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
     ]
-    
+
+    public static let currentTowerTest = [
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
+        Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July")
+    ]
+
     public static let monthlyPreview = [
         Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
         Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),

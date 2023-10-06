@@ -17,7 +17,6 @@ struct SplashScreen: View {
     }
 }
 
-
 #Preview {
     SplashScreen(isShowing: .constant(true))
 }
