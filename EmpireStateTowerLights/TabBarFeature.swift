@@ -16,25 +16,25 @@ struct TabBarFeature: Reducer {
         var monthlyTowerTab = MonthlyTowerLightsFeature.State()
         var selectedTab: Tab = .current
     }
-    
+
     enum Action: Equatable {
         case currentTowerTab(CurrentTowerLightsFeature.Action)
         case monthlyTowerTab(MonthlyTowerLightsFeature.Action)
         case selectedTabChanged(Tab)
     }
+
     var body: some ReducerOf<Self> {
         Reduce { state, action in
-            switch action {
-                
+            switch action {                
             case let .selectedTabChanged(tab):
                 state.selectedTab = tab
                 return .none
-            
+
             case .currentTowerTab, .monthlyTowerTab:
                 return .none
             }
         }
-        
+
         Scope(state: \.currentTowerTab, action: /Action.currentTowerTab) {
             CurrentTowerLightsFeature()
         }
@@ -50,11 +50,11 @@ enum Tab {
 
 struct TabBarView: View {
     let store: StoreOf<TabBarFeature>
-    
+
     var body: some View {
         WithViewStore(self.store, observe: \.selectedTab) { viewStore in
             TabView(selection: viewStore.binding(send: TabBarFeature.Action.selectedTabChanged)) {
-                 CurrentTowerLightsView(
+                CurrentTowerLightsView(
                     store: self.store.scope(
                         state: \.currentTowerTab,
                         action: TabBarFeature.Action.currentTowerTab
@@ -62,7 +62,7 @@ struct TabBarView: View {
                 )
                 .tabItem { Label("Current", systemImage: "building") }
                 .tag(Tab.current)
-                
+
                 MonthlyTowerLightsView(
                     store: self.store.scope(
                         state: \.monthlyTowerTab,

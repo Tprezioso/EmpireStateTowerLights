@@ -15,30 +15,31 @@ import Models
 struct Provider: TimelineProvider {
     let viewStore: ViewStore<CurrentTowerWidgetFeature.State, CurrentTowerWidgetFeature.Action>
     @Dependency(\.currentTowerClient) var currentTowerClient
+    
     func placeholder(in context: Context) -> SimpleEntry {
         viewStore.send(.onAppear)
         return SimpleEntry(date: Date(), tower: Tower.currentPreview.first!)
     }
-    
+
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-            viewStore.send(.onAppear)
+        viewStore.send(.onAppear)
         let entry = SimpleEntry(date: Date(), tower: viewStore.tower!)
-            completion(entry)
+        completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task { @MainActor in
             var entries: [SimpleEntry] = []
             let currentDate = Date()
-            
+
             await viewStore.send(.onAppear).finish()
-            
+
             for hourOffset in 0 ..< 5 {
                 let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
                 let entry = SimpleEntry(date: entryDate, tower: viewStore.tower ?? Tower.currentPreview.first!)
                 entries.append(entry)
             }
-            
+
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }
@@ -53,7 +54,7 @@ struct SimpleEntry: TimelineEntry {
 struct EmpireStateTowerWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
     let store: StoreOf<CurrentTowerWidgetFeature>
-    
+
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             ZStack {
@@ -68,10 +69,10 @@ struct EmpireStateTowerWidgetEntryView : View {
                 } else {
                     Image("defaultBuilding")
                 }
-                
+
                 VStack {
                     Spacer()
-                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")                        
+                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
                         .foregroundColor(viewStore.imageData == nil ? .black : .white)
                         .font(.subheadline)
                         .bold()
@@ -108,16 +109,16 @@ extension WidgetConfiguration
 {
     func contentMarginsDisabledIfAvailable() -> some WidgetConfiguration
     {
-        #if compiler(>=5.9) // Xcode 15
-            if #available(iOSApplicationExtension 17.0, *) {
-                return self.contentMarginsDisabled()
-            }
-            else {
-                return self
-            }
-        #else
+#if compiler(>=5.9) // Xcode 15
+        if #available(iOSApplicationExtension 17.0, *) {
+            return self.contentMarginsDisabled()
+        }
+        else {
             return self
-        #endif
+        }
+#else
+        return self
+#endif
     }
 }
 
@@ -133,12 +134,12 @@ struct CurrentTowerWidgetFeature: Reducer {
         var tower: Tower?
         var imageData: UIImage?
     }
-    
+
     enum Action: Equatable {
         case onAppear
         case didReceiveData([Tower], Data)
     }
-    
+
     @Dependency(\.currentTowerClient) var currentTowerClient
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -152,15 +153,14 @@ struct CurrentTowerWidgetFeature: Reducer {
                         let imageData = try await URLSession.shared.data(from: URL(string: towers[1].image!)!)
                         await send(.didReceiveData(towers, imageData.0))
                     } catch {
-                        
+
                     }
                 }
-                
+
             case let .didReceiveData(towers, imageData):
                 state.tower = towers[1]
                 state.imageData = UIImage(data: imageData)?.resized(toWidth: 1000)
                 return .none
-            
             }
         }
     }

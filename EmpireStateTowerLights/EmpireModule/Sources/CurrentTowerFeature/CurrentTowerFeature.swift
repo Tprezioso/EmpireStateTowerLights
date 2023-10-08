@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Thomas Prezioso Jr on 9/28/23.
 //
@@ -17,11 +17,11 @@ public struct CurrentTowerLightsFeature: Reducer {
         @PresentationState var alert: AlertState<Action.Alert>?
         @BindingState var dateSelection: Days = .today
         var towers = [Tower]()
-        
-       public enum Days: CustomStringConvertible, Hashable, CaseIterable {
+
+        public enum Days: CustomStringConvertible, Hashable, CaseIterable {
             case yesterday, today, tomorrow
-            
-           public var description: String {
+
+            public var description: String {
                 switch self {
                 case .yesterday:
                     return "Yesterday"
@@ -33,7 +33,7 @@ public struct CurrentTowerLightsFeature: Reducer {
             }
         }
     }
-    
+
     public enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case onAppear
@@ -46,9 +46,9 @@ public struct CurrentTowerLightsFeature: Reducer {
             case reloadData
         }
     }
-    
+
     @Dependency(\.currentTowerClient) var currentTowerClient
-   public var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
             switch action {
@@ -65,11 +65,11 @@ public struct CurrentTowerLightsFeature: Reducer {
                         await send(.loadingError)
                     }
                 }
-                
+
             case let .didReceiveData(towers):
                 state.towers = towers
                 return .none
-                
+
             case .swipedScreenLeft:
                 switch state.dateSelection {
                 case .yesterday:
@@ -80,7 +80,7 @@ public struct CurrentTowerLightsFeature: Reducer {
                     state.dateSelection = .tomorrow
                 }
                 return .none
-                
+
             case .swipedScreenRight:
                 switch state.dateSelection {
                 case .yesterday:
@@ -91,15 +91,15 @@ public struct CurrentTowerLightsFeature: Reducer {
                     state.dateSelection = .today
                 }
                 return .none
-                       
+
             case .alert(.presented(.reloadData)):
                 return .run { send in
                     await send(.onAppear)
                 }
-            
+
             case .alert(.dismiss):
                 return .none
-            
+
             case .loadingError:
                 state.alert = AlertState {
                     TextState("There seems to be a networking issue. Try again later")
@@ -107,7 +107,7 @@ public struct CurrentTowerLightsFeature: Reducer {
                     ButtonState(role: .none, action: .reloadData) {
                         TextState("Reload")
                     }
-                    
+
                     ButtonState(role: .cancel) {
                         TextState("Cancel")
                     }
@@ -125,7 +125,7 @@ public struct CurrentTowerLightsView: View {
     }
     public let store: StoreOf<CurrentTowerLightsFeature>
     @Environment(\.scenePhase) private var scenePhase
-    
+
     public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
@@ -135,7 +135,7 @@ public struct CurrentTowerLightsView: View {
                             Text($0.description).tag($0)
                         }
                     }.pickerStyle(.segmented)
-                    
+
                     if !viewStore.towers.isEmpty {
                         switch viewStore.dateSelection {
                         case .yesterday:
@@ -194,4 +194,3 @@ public struct CurrentTowerLightsView_Previews: PreviewProvider {
         )
     }
 }
-

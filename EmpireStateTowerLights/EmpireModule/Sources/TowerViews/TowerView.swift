@@ -56,8 +56,8 @@ public struct TowerView: View {
     }
 }
 
-//struct TowerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TowerView(tower: Tower.currentPreview.first)
-//    }
-//}
+struct TowerView_Previews: PreviewProvider {
+    static var previews: some View {
+        TowerView(tower: Tower.currentPreview.first)
+    }
+}

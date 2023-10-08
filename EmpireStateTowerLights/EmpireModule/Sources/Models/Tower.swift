@@ -8,12 +8,12 @@
 import Foundation
 
 public struct Tower: Equatable, Hashable {
-   public var day: String?
-   public var date: String?
-   public var image: String?
-   public var light: String?
-   public var content: String?
-    
+    public var day: String?
+    public var date: String?
+    public var image: String?
+    public var light: String?
+    public var content: String?
+
     public init(day: String? = nil, date: String? = nil, image: String? = nil, light: String? = nil, content: String? = nil) {
         self.day = day
         self.date = date

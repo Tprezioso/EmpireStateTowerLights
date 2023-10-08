@@ -14,25 +14,25 @@ public struct LottieView: UIViewRepresentable {
     var contentMode: UIView.ContentMode = .scaleAspectFit
     @Binding var isShowing: Bool
     let animationView = LottieAnimationView()
-
+    
     public func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
         let view = UIView()
         view.subviews.forEach({ $0.removeFromSuperview() })
-       
+        
         animationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(animationView)
-
+        
         NSLayoutConstraint.activate([
             animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
             animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-
+        
         animationView.animation = LottieAnimation.named(name)
         animationView.contentMode = contentMode
         animationView.loopMode = loopMode
         return view
     }
-
+    
     public func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {
         animationView.play { (finished) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -7,7 +7,7 @@ let package = Package(
     name: "EmpireModule",
     platforms: [
         .iOS(.v16)
-      ],
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -36,7 +36,6 @@ let package = Package(
         .package(url: "https://github.com/airbnb/lottie-ios", from: "4.3.2"),
         .package(url: "https://github.com/pointfreeco/swiftui-navigation", from: "1.0.0"),
         .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.0.2"),
-        
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -59,7 +58,7 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "EmpireStateTowerCurrentLightsTest", 
+            name: "EmpireStateTowerCurrentLightsTest",
             dependencies:
                 [
                     "CurrentTowerFeature",

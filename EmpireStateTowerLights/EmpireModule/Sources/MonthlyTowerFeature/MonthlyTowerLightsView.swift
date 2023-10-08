@@ -18,8 +18,8 @@ public struct MonthlyTowerLightsFeature: Reducer {
         var towers = [Tower]()
         var monthName = Date().formatted(.dateTime.month(.wide))
     }
-    
-   public enum Action: Equatable, BindableAction {
+
+    public enum Action: Equatable, BindableAction {
         case binding(BindingAction<State>)
         case onAppear
         case didReceiveData([Tower])
@@ -29,7 +29,7 @@ public struct MonthlyTowerLightsFeature: Reducer {
             case reloadData
         }
     }
-    
+
     @Dependency(\.towerClient) var towerClient
     public var body: some ReducerOf<Self> {
         BindingReducer()
@@ -37,31 +37,29 @@ public struct MonthlyTowerLightsFeature: Reducer {
             switch action {
             case .binding:
                 return .none
-                
+
             case .onAppear:
                 return .run { send in
                     do {
-                        guard let towers = try await towerClient.getTowerData() else {
-                            return
-                        }
+                        guard let towers = try await towerClient.getTowerData() else { return }
                         await send(.didReceiveData(towers))
                     } catch {
                         await send(.loadingError)
                     }
                 }
-                
+
             case let .didReceiveData(towers):
                 state.towers = towers
                 return .none
-            
+
             case .alert(.presented(.reloadData)):
                 return .run { send in
                     await send(.onAppear)
                 }
-            
+
             case .alert(.dismiss):
                 return .none
-            
+
             case .loadingError:
                 state.alert = AlertState {
                     TextState("There seems to be a networking issue. Try again later")
@@ -69,7 +67,7 @@ public struct MonthlyTowerLightsFeature: Reducer {
                     ButtonState(role: .none, action: .reloadData) {
                         TextState("Reload")
                     }
-                    
+
                     ButtonState(role: .cancel) {
                         TextState("Cancel")
                     }
@@ -85,13 +83,14 @@ public struct MonthlyTowerLightsView: View {
     public init(store: StoreOf<MonthlyTowerLightsFeature>) {
         self.store = store
     }
+
     public let store: StoreOf<MonthlyTowerLightsFeature>
     @Environment(\.scenePhase) private var scenePhase
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
+
     public var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {

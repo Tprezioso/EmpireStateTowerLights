@@ -11,14 +11,14 @@ import ComposableArchitecture
 import Models
 
 public struct CurrentTowerClient {
-   public var getCurrentTowerData:() async throws -> [Tower]?
+    public var getCurrentTowerData:() async throws -> [Tower]?
 }
 
 extension CurrentTowerClient: DependencyKey {
     public static let baseURL = "https://www.esbnyc.com"
     public static let calendarEndPoint = "/about/tower-lights"
     
-   public static var liveValue = CurrentTowerClient(
+    public static var liveValue = CurrentTowerClient(
         getCurrentTowerData: {
             guard let url = URL(string: baseURL + calendarEndPoint) else { throw NetworkError.invalidURL }
             
@@ -41,7 +41,7 @@ extension CurrentTowerClient: DependencyKey {
                 var dayLight: String? = try today?.first?.select("h3").text()
                 let dayDate: String? = try today?.first?.select("h2").text()
                 let dayDescription: String? = try today?.first?.select("p").text()
-
+                
                 for today in notToday {
                     let img: String? = try today.select("img").attr("src")
                     var light: String = try today.select("h3").text()
@@ -55,7 +55,7 @@ extension CurrentTowerClient: DependencyKey {
                     dayLight = dayLight?.components(separatedBy: " ").dropLast().joined(separator: " ")
                 }
                 towers.insert(Tower(day: dayDate,image: baseURL + todayImage, light: dayLight, content: dayDescription), at: 1)
-
+                
                 return towers
             } catch {
                 print(error.localizedDescription)
@@ -66,7 +66,7 @@ extension CurrentTowerClient: DependencyKey {
 }
 
 extension CurrentTowerClient: TestDependencyKey {
-     public static var previewValue = CurrentTowerClient(getCurrentTowerData: {
+    public static var previewValue = CurrentTowerClient(getCurrentTowerData: {
         return [
             Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July"),
             Tower(day: "4", date: "July", image: "", light: "Red, White, and Blue", content: "Forth Of July") ,
