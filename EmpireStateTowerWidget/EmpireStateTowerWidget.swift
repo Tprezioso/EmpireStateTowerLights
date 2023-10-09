@@ -57,36 +57,55 @@ struct EmpireStateTowerWidgetEntryView : View {
 
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            ZStack {
-                if let uiImage = viewStore.imageData {
-                    GeometryReader { geo in
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo.size.width, height: geo.size.height)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+//            switch family {
+//            case .systemSmall:
+                ZStack {
+                    if let uiImage = viewStore.imageData {
+                        GeometryReader { geo in
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: geo.size.width, height: geo.size.height)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                    } else {
+                        Image("defaultBuilding")
                     }
-                } else {
-                    Image("defaultBuilding")
-                }
 
-                VStack {
-                    Spacer()
-                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
-                        .foregroundColor(viewStore.imageData == nil ? .black : .white)
-                        .font(.subheadline)
-                        .bold()
-                        .padding(.horizontal, viewStore.imageData != nil ? 0 : 10)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .background(Color.black.opacity(0.3))
-                        .onAppear { viewStore.send(.onAppear) }
+                    VStack {
+                        Spacer()
+                        Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
+                            .foregroundColor(viewStore.imageData == nil ? .black : .white)
+                            .font(.subheadline)
+                            .bold()
+                            .padding(.horizontal, viewStore.imageData != nil ? 0 : 10)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .background(Color.black.opacity(0.3))
+                            .onAppear { viewStore.send(.onAppear) }
+                    }
+                    .padding()
                 }
-                .padding()
-            }
+                .widgetBackground(backgroundView: Color.purple)
+//            case .systemMedium, .systemLarge, .systemExtraLarge, .accessoryInline, .accessoryRectangular, .accessoryCircular:
+//                EmptyView()
+//            default:
+//                EmptyView()
+//            }
         }
     }
 }
 
+extension WidgetConfiguration {
+    func adaptedSupportedFamilies() -> some WidgetConfiguration {
+        if #available(iOS 16, *) {
+            return self.supportedFamilies([
+                .systemSmall, .systemMedium])
+        } else {
+            return self.supportedFamilies([
+                .systemSmall])
+        }
+    }
+}
 
 struct EmpireStateTowerWidget: Widget {
     let kind: String = "EmpireStateTowerWidget"
@@ -100,25 +119,35 @@ struct EmpireStateTowerWidget: Widget {
         }
         .configurationDisplayName("Empire State Building Lights")
         .description("I wonder what color the lights are tonight?")
-        .supportedFamilies([.systemSmall])
+//        .supportedFamilies([.systemSmall])
+        .adaptedSupportedFamilies()
         .contentMarginsDisabledIfAvailable()
     }
 }
 
-extension WidgetConfiguration
-{
+extension WidgetConfiguration {
     func contentMarginsDisabledIfAvailable() -> some WidgetConfiguration
     {
-#if compiler(>=5.9) // Xcode 15
-        if #available(iOSApplicationExtension 17.0, *) {
+        if #available(iOSApplicationExtension 17.0, *)
+        {
             return self.contentMarginsDisabled()
         }
-        else {
+        else
+        {
             return self
         }
-#else
-        return self
-#endif
+    }
+}
+
+extension View {
+    func widgetBackground(backgroundView: some View) -> some View {
+        if #available(watchOS 10.0, iOSApplicationExtension 17.0, iOS 17.0, macOSApplicationExtension 14.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
     }
 }
 
@@ -159,7 +188,7 @@ struct CurrentTowerWidgetFeature: Reducer {
 
             case let .didReceiveData(towers, imageData):
                 state.tower = towers[1]
-                state.imageData = UIImage(data: imageData)?.resized(toWidth: 1000)
+                state.imageData = UIImage(data: imageData)?.resized(toWidth: 500)
                 return .none
             }
         }
