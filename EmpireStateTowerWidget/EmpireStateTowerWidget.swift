@@ -54,43 +54,36 @@ struct SimpleEntry: TimelineEntry {
 struct EmpireStateTowerWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
     let store: StoreOf<CurrentTowerWidgetFeature>
-
+    
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-//            switch family {
-//            case .systemSmall:
-                ZStack {
-                    if let uiImage = viewStore.imageData {
-                        GeometryReader { geo in
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: geo.size.width, height: geo.size.height)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                        }
-                    } else {
-                        Image("defaultBuilding")
-                    }
-
-                    VStack {
-                        Spacer()
-                        Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
-                            .foregroundColor(viewStore.imageData == nil ? .black : .white)
-                            .font(.subheadline)
-                            .bold()
-                            .padding(.horizontal, viewStore.imageData != nil ? 0 : 10)
+            ZStack {
+                if let uiImage = viewStore.imageData {
+                    GeometryReader { geo in
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geo.size.width, height: geo.size.height)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .background(Color.black.opacity(0.3))
-                            .onAppear { viewStore.send(.onAppear) }
                     }
-                    .padding()
+                } else {
+                    Image("defaultBuilding")
                 }
-                .widgetBackground(backgroundView: Color.purple)
-//            case .systemMedium, .systemLarge, .systemExtraLarge, .accessoryInline, .accessoryRectangular, .accessoryCircular:
-//                EmptyView()
-//            default:
-//                EmptyView()
-//            }
+                
+                VStack {
+                    Spacer()
+                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
+                        .foregroundColor(viewStore.imageData == nil ? .black : .white)
+                        .font(.subheadline)
+                        .bold()
+                        .padding(.horizontal, viewStore.imageData != nil ? 0 : 10)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .background(Color.black.opacity(0.3))
+                        .onAppear { viewStore.send(.onAppear) }
+                }
+                .padding()
+            }
+            .widgetBackground(backgroundView: Color.purple)
         }
     }
 }
