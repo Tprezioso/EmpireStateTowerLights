@@ -23,6 +23,7 @@
 		55A4E8CB2AC7907400199360 /* TowerViews in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8CA2AC7907400199360 /* TowerViews */; };
 		55A4E8D12AC7A5BE00199360 /* MonthlyTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */; };
 		55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4F6F32AC51A9800677B48 /* SplashScreen.swift */; };
+		55CC5C0E2B1E7C700045B062 /* EmpireAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CC5C0D2B1E7C700045B062 /* EmpireAppIntents.swift */; };
 		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
 		55F64ADB2AAFD84A00A5CCE5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */; };
 		55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F64ADC2AAFD84A00A5CCE5 /* SwiftUI.framework */; };
@@ -75,6 +76,7 @@
 		55A0F07B2AC62BBF009D42DB /* Empire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empire.json; sourceTree = "<group>"; };
 		55A0F07F2AC62CEA009D42DB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		55C4F6F32AC51A9800677B48 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		55CC5C0D2B1E7C700045B062 /* EmpireAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireAppIntents.swift; sourceTree = "<group>"; };
 		55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpireStateTowerLightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmpireStateTowerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F64ADA2AAFD84A00A5CCE5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */,
+				55CC5C0D2B1E7C700045B062 /* EmpireAppIntents.swift */,
 				5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */,
 				55A0F07D2AC62BC5009D42DB /* SplashAnimation */,
 				5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */,
@@ -358,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55CC5C0E2B1E7C700045B062 /* EmpireAppIntents.swift in Sources */,
 				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
 				55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */,

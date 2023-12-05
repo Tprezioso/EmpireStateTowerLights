@@ -12,6 +12,12 @@ import MonthlyTowerFeature
 
 struct TabBarFeature: Reducer {
     struct State: Equatable {
+        init(currentTowerTab: CurrentTowerLightsFeature.State = CurrentTowerLightsFeature.State(), monthlyTowerTab: MonthlyTowerLightsFeature.State = MonthlyTowerLightsFeature.State(), selectedTab: Tab = .current) {
+            self.currentTowerTab = currentTowerTab
+            self.monthlyTowerTab = monthlyTowerTab
+            self.selectedTab = selectedTab
+        }
+        
         var currentTowerTab = CurrentTowerLightsFeature.State()
         var monthlyTowerTab = MonthlyTowerLightsFeature.State()
         var selectedTab: Tab = .current
