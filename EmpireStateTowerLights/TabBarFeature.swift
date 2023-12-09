@@ -55,13 +55,24 @@ enum Tab {
 }
 
 struct TabBarView: View {
-    let store: StoreOf<TabBarFeature>
+
+    @StateObject var viewModel = ViewModel.shared
+
+    class ViewModel: ObservableObject {
+        init() {
+            self.store = Store(initialState: .init()) {
+                TabBarFeature()
+            }
+        }
+        static var shared = ViewModel()
+        let store: StoreOf<TabBarFeature>
+    }
 
     var body: some View {
-        WithViewStore(self.store, observe: \.selectedTab) { viewStore in
+        WithViewStore(viewModel.store, observe: \.selectedTab) { viewStore in
             TabView(selection: viewStore.binding(send: TabBarFeature.Action.selectedTabChanged)) {
                 CurrentTowerLightsView(
-                    store: self.store.scope(
+                    store: viewModel.store.scope(
                         state: \.currentTowerTab,
                         action: TabBarFeature.Action.currentTowerTab
                     )
@@ -70,7 +81,7 @@ struct TabBarView: View {
                 .tag(Tab.current)
 
                 MonthlyTowerLightsView(
-                    store: self.store.scope(
+                    store: viewModel.store.scope(
                         state: \.monthlyTowerTab,
                         action: TabBarFeature.Action.monthlyTowerTab
                     )
@@ -84,8 +95,25 @@ struct TabBarView: View {
 
 struct TabBarFeature_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView(store: .init(initialState: TabBarFeature.State()) {
-            TabBarFeature()
-        })
+        TabBarView(viewModel: .shared)
+    }
+}
+
+struct AppDomain: Reducer {
+    typealias State = TabBarFeature.State
+
+    enum Action: Equatable {
+        case openMonthView
+    }
+
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+
+            case .openMonthView:
+                state.selectedTab = .monthly
+                return .none
+            }
+        }
     }
 }

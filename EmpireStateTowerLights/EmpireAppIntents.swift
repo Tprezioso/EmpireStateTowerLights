@@ -15,8 +15,10 @@ struct OpenMonthlyLights: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult {
+        let tabBarStore = TabBarView.ViewModel.shared
+        tabBarStore.store.send(.selectedTabChanged(.monthly))
 
-        navigationModel.isShowingMonthly = true
+//        navigationModel.isShowingMonthly = true
 //        TabBarView(store: .init(initialState: TabBarFeature.State(selectedTab: .monthly)) {
 //            TabBarFeature()
 //        })
