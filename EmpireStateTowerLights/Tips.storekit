@@ -1,0 +1,70 @@
+{
+  "identifier" : "4C1F7E2A",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6740000001",
+      "localizations" : [
+        {
+          "description" : "A small thank-you tip.",
+          "displayName" : "Cup of Coffee",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.Swifttom.EmpireStateTowerLights.tip.coffee",
+      "referenceName" : "Tip - Coffee",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "6740000002",
+      "localizations" : [
+        {
+          "description" : "A medium thank-you tip.",
+          "displayName" : "Slice of Pizza",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.Swifttom.EmpireStateTowerLights.tip.slice",
+      "referenceName" : "Tip - Pizza",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "6740000003",
+      "localizations" : [
+        {
+          "description" : "A big thank-you tip.",
+          "displayName" : "New York Cheesecake",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.Swifttom.EmpireStateTowerLights.tip.cheesecake",
+      "referenceName" : "Tip - Cheesecake",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "6JBM5ZNF6C",
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

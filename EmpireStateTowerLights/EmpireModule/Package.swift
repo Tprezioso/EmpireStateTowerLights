@@ -5,10 +5,14 @@ import PackageDescription
 let package = Package(
     name: "EmpireModule",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v17),
+        .watchOS(.v10)
     ],
     products: [
         .library(name: "AppFeature", targets: ["AppFeature"]),
+        .library(name: "AboutFeature", targets: ["AboutFeature"]),
+        .library(name: "TowerWidgetKit", targets: ["TowerWidgetKit"]),
+        .library(name: "WatchFeature", targets: ["WatchFeature"]),
         .library(name: "CurrentTowerFeature", targets: ["CurrentTowerFeature"]),
         .library(name: "MonthlyTowerFeature", targets: ["MonthlyTowerFeature"]),
         .library(name: "TowerClient", targets: ["TowerClient"]),
@@ -36,6 +40,7 @@ let package = Package(
             ]
         ),
         .target(name: "DesignSystem", dependencies: ["Models"]),
+        .target(name: "TowerWidgetKit", dependencies: ["DesignSystem", "Models", "TowerClient"]),
         .target(
             name: "CurrentTowerFeature",
             dependencies: [
@@ -55,12 +60,32 @@ let package = Package(
             ]
         ),
         .target(
+            name: "AboutFeature",
+            dependencies: [
+                "DesignSystem",
+                "Models",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ],
+            resources: [.process("Resources")]
+        ),
+        .target(
             name: "AppFeature",
             dependencies: [
+                "AboutFeature",
                 "CurrentTowerFeature",
                 "MonthlyTowerFeature",
                 "DesignSystem",
                 "TowerClient",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+            ]
+        ),
+        .target(
+            name: "WatchFeature",
+            dependencies: [
+                "CurrentTowerFeature",
+                "MonthlyTowerFeature",
+                "DesignSystem",
+                "Models",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         ),
@@ -72,6 +97,10 @@ let package = Package(
         .testTarget(
             name: "CurrentTowerFeatureTests",
             dependencies: ["CurrentTowerFeature", "TowerClient", "Models"]
+        ),
+        .testTarget(
+            name: "AboutFeatureTests",
+            dependencies: ["AboutFeature"]
         ),
         .testTarget(
             name: "AppFeatureTests",

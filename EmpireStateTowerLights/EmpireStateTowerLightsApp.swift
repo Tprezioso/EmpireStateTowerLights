@@ -25,6 +25,7 @@ struct EmpireStateTowerLightsApp: App {
         WindowGroup {
             ZStack {
                 AppView(store: AppStore.shared)
+                    .task { await AppStore.shared.send(.appLaunched).finish() }
 
                 if isShowingSplash {
                     SplashScreen {

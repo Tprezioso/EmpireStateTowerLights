@@ -174,3 +174,36 @@ public struct LoadingCard: View {
         .accessibilityLabel("Loading tower lights")
     }
 }
+
+/// Attribution for ESB photos and schedule data.
+public struct PhotoCredit: View {
+    public init() {}
+
+    public var body: some View {
+        Text("Photo: Empire State Building")
+            .font(.caption2.weight(.medium))
+            .foregroundStyle(.white.opacity(0.85))
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(.black.opacity(0.45), in: Capsule())
+    }
+}
+
+/// Footer crediting the Empire State Building as the source of the schedule and photos.
+public struct SourceCredit: View {
+    public init() {}
+
+    public var body: some View {
+        VStack(spacing: 4) {
+            Text("Schedule and photos courtesy of the Empire State Building.")
+            Link("esbnyc.com", destination: URL(string: "https://www.esbnyc.com/about/tower-lights")!)
+                .fontWeight(.semibold)
+                .foregroundStyle(Theme.gold)
+        }
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .multilineTextAlignment(.center)
+        .frame(maxWidth: .infinity)
+        .padding(.top, 8)
+    }
+}

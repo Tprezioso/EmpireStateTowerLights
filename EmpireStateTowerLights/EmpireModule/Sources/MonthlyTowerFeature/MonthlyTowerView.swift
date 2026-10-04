@@ -3,6 +3,7 @@
 //  EmpireStateTowerLights
 //
 
+#if os(iOS)
 import ComposableArchitecture
 import DesignSystem
 import Models
@@ -59,6 +60,7 @@ public struct MonthlyTowerView: View {
                     }
                     .buttonStyle(.plain)
                 }
+                SourceCredit()
             }
         } else if let message = store.errorMessage, !store.isLoading {
             ErrorCard(message: message) { store.send(.retryButtonTapped) }
@@ -139,3 +141,4 @@ public struct MonthlyTowerView: View {
     )
     .preferredColorScheme(.dark)
 }
+#endif

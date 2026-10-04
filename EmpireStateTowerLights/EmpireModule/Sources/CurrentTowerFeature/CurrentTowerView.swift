@@ -3,6 +3,7 @@
 //  EmpireStateTowerLights
 //
 
+#if os(iOS)
 import ComposableArchitecture
 import DesignSystem
 import Models
@@ -62,7 +63,7 @@ public struct CurrentTowerView: View {
     private let headerHeight: CGFloat = 64
 
     private var header: some View {
-        HStack(alignment: .firstTextBaseline) {
+        HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Empire State Building").eyebrowStyle()
                 Text((store.lights?.today.day ?? CalendarDay(Date())).formatted(.dateTime.weekday(.wide).month(.wide).day()))
@@ -73,6 +74,18 @@ public struct CurrentTowerView: View {
             if store.isLoading && store.lights != nil {
                 ProgressView().controlSize(.small)
             }
+            Button {
+                store.send(.aboutButtonTapped)
+            } label: {
+                Image(systemName: "sparkles")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(Theme.gold)
+                    .frame(width: 40, height: 40)
+                    .background(.ultraThinMaterial, in: Circle())
+                    .overlay(Circle().strokeBorder(.white.opacity(0.12)))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("About, app icons, and tip jar")
         }
         .padding(.horizontal, 20)
         .padding(.top, 8)
@@ -185,3 +198,4 @@ struct DayPicker: View {
     )
     .preferredColorScheme(.dark)
 }
+#endif

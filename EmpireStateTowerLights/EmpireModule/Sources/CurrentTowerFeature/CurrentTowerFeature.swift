@@ -56,6 +56,13 @@ public struct CurrentTowerFeature {
         case retryButtonTapped
         case response(Result<CurrentLights, any Error>)
         case lightingTapped(TowerLighting)
+        case aboutButtonTapped
+        case delegate(Delegate)
+
+        @CasePathable
+        public enum Delegate {
+            case showAbout
+        }
     }
 
     enum CancelID { case load }
@@ -105,6 +112,12 @@ public struct CurrentTowerFeature {
 
             case let .lightingTapped(lighting):
                 state.detail = lighting
+                return .none
+
+            case .aboutButtonTapped:
+                return .send(.delegate(.showAbout))
+
+            case .delegate:
                 return .none
             }
         }

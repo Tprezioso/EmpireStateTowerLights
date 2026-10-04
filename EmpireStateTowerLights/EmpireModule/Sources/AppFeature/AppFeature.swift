@@ -5,6 +5,7 @@
 //  Created by Thomas Prezioso Jr on 9/5/23.
 //
 
+import AboutFeature
 import ComposableArchitecture
 import CurrentTowerFeature
 import DesignSystem
@@ -20,6 +21,7 @@ public struct AppFeature {
         public var selectedTab: Tab = .tonight
         public var tonight = CurrentTowerFeature.State()
         public var calendar = MonthlyTowerFeature.State()
+        @Presents public var about: AboutFeature.State?
 
         public init() {}
     }
@@ -30,6 +32,8 @@ public struct AppFeature {
 
     public enum Action: BindableAction {
         case binding(BindingAction<State>)
+        case appLaunched
+        case about(PresentationAction<AboutFeature.Action>)
         case tonight(CurrentTowerFeature.Action)
         case calendar(MonthlyTowerFeature.Action)
         case openURL(URL)
@@ -38,6 +42,8 @@ public struct AppFeature {
 
     /// The URL scheme used by the widget, e.g. `towerlights://calendar`.
     public static let urlScheme = "towerlights"
+
+    @Dependency(\.tipJar) var tipJar
 
     public init() {}
 
@@ -51,7 +57,15 @@ public struct AppFeature {
         }
         Reduce { state, action in
             switch action {
-            case .binding, .tonight, .calendar:
+            case .appLaunched:
+                // Apple requires finishing any tip transactions delivered outside a purchase flow.
+                return .run { _ in await tipJar.finishTransactions() }
+
+            case .tonight(.delegate(.showAbout)):
+                state.about = AboutFeature.State()
+                return .none
+
+            case .binding, .tonight, .calendar, .about:
                 return .none
 
             case let .openURL(url):
@@ -62,14 +76,19 @@ public struct AppFeature {
 
             case let .open(tab):
                 state.selectedTab = tab
+                state.about = nil
                 state.tonight.detail = nil
                 state.calendar.detail = nil
                 return .none
             }
         }
+        .ifLet(\.$about, action: \.about) {
+            AboutFeature()
+        }
     }
 }
 
+#if os(iOS)
 public struct AppView: View {
     @Bindable var store: StoreOf<AppFeature>
 
@@ -90,6 +109,9 @@ public struct AppView: View {
         .tint(Theme.gold)
         .preferredColorScheme(.dark)
         .onOpenURL { store.send(.openURL($0)) }
+        .sheet(item: $store.scope(state: \.about, action: \.about)) { aboutStore in
+            AboutView(store: aboutStore)
+        }
     }
 }
 
@@ -100,3 +122,4 @@ public struct AppView: View {
         $0.towerClient = .previewValue
     })
 }
+#endif

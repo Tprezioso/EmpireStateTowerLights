@@ -80,7 +80,7 @@ extension View {
     /// Hides the iOS 26 scroll edge effect, which draws a visible band over the night sky.
     @ViewBuilder
     public func hidesScrollEdgeEffect() -> some View {
-        if #available(iOS 26, *) {
+        if #available(iOS 26, watchOS 26, *) {
             self.scrollEdgeEffectHidden()
         } else {
             self

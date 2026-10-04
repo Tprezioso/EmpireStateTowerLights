@@ -25,6 +25,12 @@ public struct LightingDetailView: View {
                         .frame(height: 360)
                         .frame(maxWidth: .infinity)
                         .clipShape(RoundedRectangle(cornerRadius: Theme.cardCornerRadius, style: .continuous))
+                        .overlay(alignment: .bottomLeading) {
+                            if lighting.imageURL != nil {
+                                PhotoCredit()
+                                    .padding(10)
+                            }
+                        }
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text(lighting.day.relativeName(today: today)).eyebrowStyle()
@@ -45,6 +51,8 @@ public struct LightingDetailView: View {
 
                     ShareLightingButton(lighting: lighting, today: today)
                         .frame(maxWidth: .infinity)
+
+                    SourceCredit()
                 }
                 .padding(20)
             }

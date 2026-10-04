@@ -32,3 +32,34 @@ final class AppFeatureTests: XCTestCase {
         await store.send(.openURL(URL(string: "https://www.esbnyc.com")!))
     }
 }
+
+@MainActor
+final class AppFeatureAboutTests: XCTestCase {
+    func testAboutButtonPresentsSheetAndDeepLinkDismissesIt() async {
+        let store = TestStore(initialState: AppFeature.State()) {
+            AppFeature()
+        }
+
+        await store.send(.tonight(.aboutButtonTapped))
+        await store.receive(\.tonight.delegate.showAbout) {
+            $0.about = .init()
+        }
+
+        await store.send(.open(.calendar)) {
+            $0.selectedTab = .calendar
+            $0.about = nil
+        }
+    }
+
+    func testAppLaunchFinishesTransactions() async {
+        let finished = LockIsolated(false)
+        let store = TestStore(initialState: AppFeature.State()) {
+            AppFeature()
+        } withDependencies: {
+            $0.tipJar.finishTransactions = { finished.setValue(true) }
+        }
+
+        await store.send(.appLaunched)
+        XCTAssertTrue(finished.value)
+    }
+}
