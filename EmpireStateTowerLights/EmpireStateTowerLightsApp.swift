@@ -5,20 +5,34 @@
 //  Created by Thomas Prezioso Jr on 8/29/23.
 //
 
-import SwiftUI
-import AppIntents
+import AppFeature
 import ComposableArchitecture
+import SwiftUI
+
+@MainActor
+enum AppStore {
+    /// The single app store, shared so App Intents can drive navigation.
+    static let shared = Store(initialState: AppFeature.State()) {
+        AppFeature()
+    }
+}
 
 @main
 struct EmpireStateTowerLightsApp: App {
-    @State var isShowingSplash = true
+    @State private var isShowingSplash = true
 
     var body: some Scene {
         WindowGroup {
-            if isShowingSplash {
-                SplashScreen(isShowing: $isShowingSplash)
-            } else {
-                TabBarView()
+            ZStack {
+                AppView(store: AppStore.shared)
+
+                if isShowingSplash {
+                    SplashScreen {
+                        withAnimation(.easeInOut(duration: 0.45)) { isShowingSplash = false }
+                    }
+                    .transition(.opacity)
+                    .zIndex(1)
+                }
             }
         }
     }

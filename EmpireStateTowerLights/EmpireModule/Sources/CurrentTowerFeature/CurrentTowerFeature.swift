@@ -1,196 +1,130 @@
 //
-//  File.swift
-//
+//  CurrentTowerFeature.swift
+//  EmpireStateTowerLights
 //
 //  Created by Thomas Prezioso Jr on 9/28/23.
 //
 
-import SwiftUI
 import ComposableArchitecture
+import Foundation
 import Models
-import TowerViews
+import TowerClient
 
-public struct CurrentTowerLightsFeature: Reducer {
-    public init() {}
+@Reducer
+public struct CurrentTowerFeature {
+    @ObservableState
     public struct State: Equatable {
-        public init() {}
-        @PresentationState var alert: AlertState<Action.Alert>?
-        @BindingState var dateSelection: Days = .today
-        var towers = [Tower]()
+        public var lights: CurrentLights?
+        public var isLoading = false
+        public var errorMessage: String?
+        public var selectedDay: Day = .today
+        public var lastUpdated: Date?
+        public var detail: TowerLighting?
 
-        public enum Days: CustomStringConvertible, Hashable, CaseIterable {
-            case yesterday, today, tomorrow
+        public init(lights: CurrentLights? = nil) {
+            self.lights = lights
+        }
 
-            public var description: String {
-                switch self {
-                case .yesterday:
-                    return "Yesterday"
-                case .today:
-                    return "Today"
-                case .tomorrow:
-                    return "Tomorrow"
-                }
+        /// The days we have data for, in display order.
+        public var availableDays: [Day] {
+            guard let lights else { return [] }
+            return Day.allCases.filter { lights.lighting(for: $0) != nil }
+        }
+
+        public var selectedLighting: TowerLighting? {
+            lights?.lighting(for: selectedDay)
+        }
+    }
+
+    public enum Day: String, Hashable, CaseIterable, Sendable {
+        case yesterday, today, tomorrow
+
+        public var title: String {
+            switch self {
+            case .yesterday: "Last Night"
+            case .today: "Tonight"
+            case .tomorrow: "Tomorrow"
             }
         }
     }
 
-    public enum Action: Equatable, BindableAction {
+    public enum Action: BindableAction {
         case binding(BindingAction<State>)
-        case onAppear
-        case didReceiveData([Tower])
-        case swipedScreenLeft
-        case swipedScreenRight
-        case loadingError
-        case alert(PresentationAction<Alert>)
-        public enum Alert {
-            case reloadData
-        }
+        case task
+        case sceneBecameActive
+        case refresh
+        case retryButtonTapped
+        case response(Result<CurrentLights, any Error>)
+        case lightingTapped(TowerLighting)
     }
 
-    @Dependency(\.currentTowerClient) var currentTowerClient
+    enum CancelID { case load }
+
+    /// How long fetched data is considered fresh when returning to the app.
+    static let staleInterval: TimeInterval = 15 * 60
+
+    @Dependency(\.towerClient) var towerClient
+    @Dependency(\.date.now) var now
+
+    public init() {}
+
     public var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce { state, action in
             switch action {
             case .binding:
                 return .none
-            case .onAppear:
-                return .run { send in
-                    do {
-                        guard let towers = try await currentTowerClient.getCurrentTowerData() else {
-                            return
-                        }
-                        await send(.didReceiveData(towers))
-                    } catch {
-                        await send(.loadingError)
-                    }
-                }
 
-            case let .didReceiveData(towers):
-                state.towers = towers
-                return .none
+            case .task:
+                guard state.lights == nil else { return .none }
+                return load(&state)
 
-            case .swipedScreenLeft:
-                switch state.dateSelection {
-                case .yesterday:
-                    state.dateSelection = .today
-                case .today:
-                    state.dateSelection = .tomorrow
-                case .tomorrow:
-                    state.dateSelection = .tomorrow
+            case .sceneBecameActive:
+                guard let lastUpdated = state.lastUpdated else { return load(&state) }
+                let isStale = now.timeIntervalSince(lastUpdated) > Self.staleInterval
+                    || CalendarDay(now) != CalendarDay(lastUpdated)
+                return isStale ? load(&state) : .none
+
+            case .refresh, .retryButtonTapped:
+                return load(&state)
+
+            case let .response(.success(lights)):
+                state.isLoading = false
+                state.errorMessage = nil
+                state.lights = lights
+                state.lastUpdated = now
+                if lights.lighting(for: state.selectedDay) == nil {
+                    state.selectedDay = .today
                 }
                 return .none
 
-            case .swipedScreenRight:
-                switch state.dateSelection {
-                case .yesterday:
-                    state.dateSelection = .yesterday
-                case .today:
-                    state.dateSelection = .yesterday
-                case .tomorrow:
-                    state.dateSelection = .today
-                }
+            case let .response(.failure(error)):
+                state.isLoading = false
+                state.errorMessage = error.localizedDescription
                 return .none
 
-            case .alert(.presented(.reloadData)):
-                return .run { send in
-                    await send(.onAppear)
-                }
-
-            case .alert(.dismiss):
-                return .none
-
-            case .loadingError:
-                state.alert = AlertState {
-                    TextState("There seems to be a networking issue. Try again later")
-                } actions: {
-                    ButtonState(role: .none, action: .reloadData) {
-                        TextState("Reload")
-                    }
-
-                    ButtonState(role: .cancel) {
-                        TextState("Cancel")
-                    }
-                }
+            case let .lightingTapped(lighting):
+                state.detail = lighting
                 return .none
             }
         }
-        .ifLet(\.$alert, action: /Action.alert)
     }
-}
 
-public struct CurrentTowerLightsView: View {
-    public init(store: StoreOf<CurrentTowerLightsFeature>) {
-        self.store = store
-    }
-    public let store: StoreOf<CurrentTowerLightsFeature>
-    @Environment(\.scenePhase) private var scenePhase
-
-    public var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
-            NavigationStack {
-                VStack(spacing: 20) {
-                    Picker("Pick your day", selection: viewStore.$dateSelection) {
-                        ForEach(CurrentTowerLightsFeature.State.Days.allCases, id: \.self) {
-                            Text($0.description).tag($0)
-                        }
-                    }.pickerStyle(.segmented)
-
-                    if !viewStore.towers.isEmpty {
-                        switch viewStore.dateSelection {
-                        case .yesterday:
-                            TowerView(tower: viewStore.towers[0])
-                        case .today:
-                            TowerView(tower: viewStore.towers[1])
-                        case .tomorrow:
-                            TowerView(tower: viewStore.towers[2])
-                        }
-                    }
-                    Spacer()
-                }
-                .gesture(
-                    DragGesture()
-                        .onEnded { value in
-                            if value.startLocation.x > value.location.x {
-                                viewStore.send(.swipedScreenLeft)
-                            } else {
-                                viewStore.send(.swipedScreenRight)
-                            }
-                        }
-                )
-                .navigationTitle("Current Lights")
-                .padding()
-                .onAppear {
-                    viewStore.send(.onAppear)
-                }
-                .nightBackground()
-                .preferredColorScheme(.dark)
-            }.alert(store: self.store.scope(state: \.$alert, action: {.alert($0)}))
-            .onChange(of: scenePhase) { newPhase in
-                switch newPhase {
-                case .background:
-                    break
-                case .inactive:
-                    break
-                case .active:
-                    viewStore.send(.onAppear)
-                @unknown default:
-                    break
-                }
-            }
+    private func load(_ state: inout State) -> Effect<Action> {
+        state.isLoading = true
+        return .run { send in
+            await send(.response(Result { try await towerClient.current() }))
         }
+        .cancellable(id: CancelID.load, cancelInFlight: true)
     }
 }
 
-public struct CurrentTowerLightsView_Previews: PreviewProvider {
-    public static var previews: some View {
-        CurrentTowerLightsView(
-            store: .init(
-                initialState: .init(),
-                reducer: {
-                    CurrentTowerLightsFeature()
-                }
-            )
-        )
+extension CurrentLights {
+    public func lighting(for day: CurrentTowerFeature.Day) -> TowerLighting? {
+        switch day {
+        case .yesterday: yesterday
+        case .today: today
+        case .tomorrow: tomorrow
+        }
     }
 }
