@@ -5,196 +5,135 @@
 //  Created by Thomas Prezioso Jr on 9/11/23.
 //
 
-import WidgetKit
-import SwiftUI
-import Intents
-import ComposableArchitecture
-import CurrentTowerFeature
+import DesignSystem
 import Models
+import SwiftUI
+import TowerWidgetKit
+import WidgetKit
 
-struct Provider: TimelineProvider {
-    let viewStore: ViewStore<CurrentTowerWidgetFeature.State, CurrentTowerWidgetFeature.Action>
-    @Dependency(\.currentTowerClient) var currentTowerClient
-    
-    func placeholder(in context: Context) -> SimpleEntry {
-        viewStore.send(.onAppear)
-        return SimpleEntry(date: Date(), tower: Tower.currentPreview.first!)
-    }
-
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        viewStore.send(.onAppear)
-        let entry = SimpleEntry(date: Date(), tower: viewStore.tower!)
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        Task { @MainActor in
-            var entries: [SimpleEntry] = []
-            let currentDate = Date()
-
-            await viewStore.send(.onAppear).finish()
-
-            for hourOffset in 0 ..< 5 {
-                let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-                let entry = SimpleEntry(date: entryDate, tower: viewStore.tower ?? Tower.currentPreview.first!)
-                entries.append(entry)
-            }
-
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
-        }
-    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let tower: Tower
-}
-
-struct EmpireStateTowerWidgetEntryView : View {
+struct EmpireStateTowerWidgetEntryView: View {
     @Environment(\.widgetFamily) var family
-    let store: StoreOf<CurrentTowerWidgetFeature>
-    
+    var entry: TowerEntry
+
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
-            ZStack {
-                if let uiImage = viewStore.imageData {
-                    GeometryReader { geo in
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo.size.width, height: geo.size.height)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                    }
-                } else {
-                    Image("defaultBuilding")
-                }
-                
-                VStack {
-                    Spacer()
-                    Text("\(viewStore.tower?.light ?? "\(Date().formatted(.dateTime.month().day().year()))")")
-                        .foregroundColor(viewStore.imageData == nil ? .black : .white)
-                        .font(.subheadline)
-                        .bold()
-                        .padding(.horizontal, viewStore.imageData != nil ? 0 : 10)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .background(Color.black.opacity(0.3))
-                        .onAppear { viewStore.send(.onAppear) }
-                }
-                .padding()
-            }
-            .widgetBackground(backgroundView: Color.purple)
+        switch family {
+        case .systemMedium:
+            medium.widgetURL(URL(string: "towerlights://tonight"))
+        case .systemSmall:
+            small.widgetURL(URL(string: "towerlights://tonight"))
+        default:
+            TowerAccessoryView(entry: entry)
         }
     }
-}
 
-extension WidgetConfiguration {
-    func adaptedSupportedFamilies() -> some WidgetConfiguration {
-        if #available(iOS 16, *) {
-            return self.supportedFamilies([
-                .systemSmall, .systemMedium])
-        } else {
-            return self.supportedFamilies([
-                .systemSmall])
+    private var colors: [LightColor] { entry.colors }
+
+    private var small: some View {
+        ZStack(alignment: .bottomLeading) {
+            LinearGradient(colors: [.clear, .black.opacity(0.8)], startPoint: .center, endPoint: .bottom)
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Tonight").eyebrowStyle()
+                Text(entry.title)
+                    .font(.system(.headline, design: .serif, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .lineLimit(3)
+                    .minimumScaleFactor(0.75)
+                ColorSwatchRow(colors: colors, size: 8)
+            }
+            .padding(14)
         }
+        .containerBackground(for: .widget) {
+            if let image = entry.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } else {
+                ZStack {
+                    sky
+                    GlowingTowerView(colors: colors.map(\.color), animatesGlow: false)
+                        .padding(.vertical, 8)
+                        .offset(x: 40)
+                }
+            }
+        }
+    }
+
+    private var medium: some View {
+        HStack(spacing: 16) {
+            GlowingTowerView(colors: colors.map(\.color), animatesGlow: false)
+                .padding(.vertical, 10)
+            VStack(alignment: .leading, spacing: 6) {
+                Text(entry.lighting.map { "Tonight · \($0.day.formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day()))" } ?? "Tonight")
+                    .eyebrowStyle()
+                Text(entry.title)
+                    .font(.system(.title3, design: .serif, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
+                if let subtitle = entry.lighting?.subtitle {
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.75))
+                        .lineLimit(3)
+                } else if entry.lighting == nil {
+                    Text("Open the app to check tonight's lights.")
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.75))
+                }
+                ColorSwatchRow(colors: colors, size: 10)
+                    .padding(.top, 2)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(.horizontal, 16)
+        .containerBackground(for: .widget) {
+            ZStack {
+                sky
+                RadialGradient(
+                    colors: [colors[0].color.opacity(0.35), .clear],
+                    center: UnitPoint(x: 0.15, y: 0.2),
+                    startRadius: 0,
+                    endRadius: 160
+                )
+            }
+        }
+    }
+
+    private var sky: some View {
+        LinearGradient(colors: [Theme.skyTop, Theme.skyMiddle, Theme.skyBottom], startPoint: .top, endPoint: .bottom)
     }
 }
 
 struct EmpireStateTowerWidget: Widget {
-    let kind: String = "EmpireStateTowerWidget"
-    let store = Store(initialState: .init(), reducer: { CurrentTowerWidgetFeature() })
+    let kind = "EmpireStateTowerWidget"
+
     var body: some WidgetConfiguration {
-        StaticConfiguration(
-            kind: kind,
-            provider: Provider(viewStore: ViewStore(self.store, observe: { $0 }))
-        ) { _ in
-            EmpireStateTowerWidgetEntryView(store: store)
+        StaticConfiguration(kind: kind, provider: TowerTimelineProvider()) { entry in
+            EmpireStateTowerWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Empire State Building Lights")
-        .description("I wonder what color the lights are tonight?")
-//        .supportedFamilies([.systemSmall])
-        .adaptedSupportedFamilies()
-        .contentMarginsDisabledIfAvailable()
+        .configurationDisplayName("Tonight's Tower Lights")
+        .description("See what color the Empire State Building is lit tonight.")
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryInline, .accessoryCircular, .accessoryRectangular])
+        .contentMarginsDisabled()
     }
 }
 
-extension WidgetConfiguration {
-    func contentMarginsDisabledIfAvailable() -> some WidgetConfiguration
-    {
-        if #available(iOSApplicationExtension 17.0, *)
-        {
-            return self.contentMarginsDisabled()
-        }
-        else
-        {
-            return self
-        }
-    }
+#Preview(as: .systemSmall) {
+    EmpireStateTowerWidget()
+} timeline: {
+    TowerEntry.preview
+    TowerEntry(date: .now, lighting: TowerLighting.previewMonth[0])
 }
 
-extension View {
-    func widgetBackground(backgroundView: some View) -> some View {
-        if #available(watchOS 10.0, iOSApplicationExtension 17.0, iOS 17.0, macOSApplicationExtension 14.0, *) {
-            return containerBackground(for: .widget) {
-                backgroundView
-            }
-        } else {
-            return background(backgroundView)
-        }
-    }
+#Preview(as: .systemMedium) {
+    EmpireStateTowerWidget()
+} timeline: {
+    TowerEntry.preview
+    TowerEntry(date: .now, lighting: nil)
 }
 
-struct EmpireStateTowerWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        EmpireStateTowerWidgetEntryView(store: .init(initialState: .init(), reducer: { CurrentTowerWidgetFeature() }))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
-
-struct CurrentTowerWidgetFeature: Reducer {
-    struct State: Equatable {
-        var tower: Tower?
-        var imageData: UIImage?
-    }
-
-    enum Action: Equatable {
-        case onAppear
-        case didReceiveData([Tower], Data)
-    }
-
-    @Dependency(\.currentTowerClient) var currentTowerClient
-    var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            switch action {
-            case .onAppear:
-                return .run { send in
-                    do {
-                        guard let towers = try await currentTowerClient.getCurrentTowerData() else {
-                            return
-                        }
-                        let imageData = try await URLSession.shared.data(from: URL(string: towers[1].image!)!)
-                        await send(.didReceiveData(towers, imageData.0))
-                    } catch {
-
-                    }
-                }
-
-            case let .didReceiveData(towers, imageData):
-                state.tower = towers[1]
-                state.imageData = UIImage(data: imageData)?.resized(toWidth: 500)
-                return .none
-            }
-        }
-    }
-}
-
-extension UIImage {
-    func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
-        let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
-        let format = imageRendererFormat
-        format.opaque = isOpaque
-        return UIGraphicsImageRenderer(size: canvas, format: format).image {
-            _ in draw(in: CGRect(origin: .zero, size: canvas))
-        }
-    }
+#Preview(as: .accessoryRectangular) {
+    EmpireStateTowerWidget()
+} timeline: {
+    TowerEntry.preview
 }
