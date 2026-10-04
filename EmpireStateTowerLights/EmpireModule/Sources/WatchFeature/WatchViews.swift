@@ -36,6 +36,7 @@ struct WatchContentView: View {
                             store.send(.calendarButtonTapped)
                         } label: {
                             Image(systemName: "calendar")
+                            .foregroundStyle(Theme.gold)
                         }
                         .accessibilityLabel("Lights calendar")
                     }
@@ -44,7 +45,6 @@ struct WatchContentView: View {
                     WatchCalendarView(store: store.scope(state: \.calendar, action: \.calendar))
                 }
         }
-        .tint(Theme.gold)
     }
 }
 
@@ -194,6 +194,7 @@ struct WatchCalendarView: View {
                     store.send(.previousMonthTapped)
                 } label: {
                     Image(systemName: "chevron.left")
+                        .foregroundStyle(Theme.gold)
                 }
                 .accessibilityLabel("Previous month")
                 Spacer()
@@ -201,6 +202,7 @@ struct WatchCalendarView: View {
                     store.send(.nextMonthTapped)
                 } label: {
                     Image(systemName: "chevron.right")
+                        .foregroundStyle(Theme.gold)
                 }
                 .accessibilityLabel("Next month")
             }
