@@ -42,24 +42,31 @@ public struct TowerPhoto: View {
     }
 
     public var body: some View {
-        AsyncImage(url: url, transaction: Transaction(animation: .easeOut(duration: 0.3))) { phase in
-            switch phase {
-            case let .success(image):
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            case .failure, .empty:
-                ZStack {
-                    LinearGradient(colors: [Theme.skyMiddle, Theme.skyBottom], startPoint: .top, endPoint: .bottom)
-                    GlowingTowerView(colors: colors, animatesGlow: false)
-                        .padding(12)
-                        .opacity(phase.error == nil && url != nil ? 0.4 : 1)
+        // A filled image reports its natural size, so a wide photo would widen the
+        // surrounding layout. Size with a flexible clear view and draw the photo in an
+        // overlay, which never affects layout.
+        Color.clear
+            .overlay {
+                AsyncImage(url: url, transaction: Transaction(animation: .easeOut(duration: 0.3))) { phase in
+                    switch phase {
+                    case let .success(image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    case .failure, .empty:
+                        ZStack {
+                            LinearGradient(colors: [Theme.skyMiddle, Theme.skyBottom], startPoint: .top, endPoint: .bottom)
+                            GlowingTowerView(colors: colors, animatesGlow: false)
+                                .padding(12)
+                                .opacity(phase.error == nil && url != nil ? 0.4 : 1)
+                        }
+                    @unknown default:
+                        Color.clear
+                    }
                 }
-            @unknown default:
-                Color.clear
             }
-        }
-        .accessibilityHidden(true)
+            .clipped()
+            .accessibilityHidden(true)
     }
 }
 
