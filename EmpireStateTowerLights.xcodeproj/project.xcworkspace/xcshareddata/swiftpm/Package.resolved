@@ -7,6 +7,7 @@
       "state" : {
         "revision" : "114354e8c1667a2edc4993700fb9fa4f90157b56",
         "version" : "1.2.2"
+<<<<<<< HEAD
       }
     },
     {
@@ -16,6 +17,8 @@
       "state" : {
         "revision" : "f4db77d7feacba0c2360b84a40c38a6ce8ff399d",
         "version" : "4.6.1"
+=======
+>>>>>>> eadfc4d7228b51173694c1992d720d833d49701c
       }
     },
     {

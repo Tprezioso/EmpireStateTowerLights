@@ -7,21 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */; };
 		5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */; };
 		5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */; };
 		5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */; };
 		5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5584EC382A9EC16E00781AD5 /* ComposableArchitecture */; };
-		558C70C72AC66B5900129614 /* CurrentTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70C62AC66B5900129614 /* CurrentTowerFeature */; };
+		558C70C72AC66B5900129614 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70C62AC66B5900129614 /* AppFeature */; };
 		558C70CB2AC6EB5400129614 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70CA2AC6EB5400129614 /* Models */; };
 		558C70CF2AC6F28400129614 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70CE2AC6F28400129614 /* Models */; };
-		558C70D12AC6F28800129614 /* CurrentTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70D02AC6F28800129614 /* CurrentTowerFeature */; };
-		55A0F07C2AC62BBF009D42DB /* Empire.json in Resources */ = {isa = PBXBuildFile; fileRef = 55A0F07B2AC62BBF009D42DB /* Empire.json */; };
-		55A0F0802AC62CEA009D42DB /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A0F07F2AC62CEA009D42DB /* LottieView.swift */; };
-		55A0F0822AC62D0D009D42DB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 55A0F0812AC62D0D009D42DB /* Lottie */; };
-		55A4E8C92AC78F2900199360 /* TowerViews in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8C82AC78F2900199360 /* TowerViews */; };
-		55A4E8CB2AC7907400199360 /* TowerViews in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8CA2AC7907400199360 /* TowerViews */; };
-		55A4E8D12AC7A5BE00199360 /* MonthlyTowerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */; };
+		558C70D12AC6F28800129614 /* TowerWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 558C70D02AC6F28800129614 /* TowerWidgetKit */; };
+		55A4E8C92AC78F2900199360 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8C82AC78F2900199360 /* DesignSystem */; };
+		55A4E8CB2AC7907400199360 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8CA2AC7907400199360 /* DesignSystem */; };
+		55A4E8D12AC7A5BE00199360 /* TowerClient in Frameworks */ = {isa = PBXBuildFile; productRef = 55A4E8D02AC7A5BE00199360 /* TowerClient */; };
 		55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C4F6F32AC51A9800677B48 /* SplashScreen.swift */; };
 		55CC5C0E2B1E7C700045B062 /* EmpireAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CC5C0D2B1E7C700045B062 /* EmpireAppIntents.swift */; };
 		55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55D512CC2A9FF8A600044A4E /* SwiftSoup */; };
@@ -33,6 +29,14 @@
 		55F64AEB2AAFD84C00A5CCE5 /* EmpireStateTowerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55F64AF42AB12DB900A5CCE5 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 55F64AF32AB12DB900A5CCE5 /* ComposableArchitecture */; };
 		55F64AF92AB13A5F00A5CCE5 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55F64AF82AB13A5F00A5CCE5 /* SwiftSoup */; };
+		015CA96405D244E7A2740AFA /* EmpireStateTowerWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CAD9FA30FA4DFE9A9A7B43 /* EmpireStateTowerWatchApp.swift */; };
+		FCBC4F01A66E48E9A80D05CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17822272659B4692A4709868 /* Assets.xcassets */; };
+		628B093C207B4848BDDB5A47 /* WatchFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 7359D2AF11D2474CA8056426 /* WatchFeature */; };
+		3B65E7D2CC44441E9510BB67 /* WatchWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2453708CEF4EE8855D6B5B /* WatchWidgets.swift */; };
+		AA6190F6837B41CC8C651A71 /* TowerWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 42CD1901DF974F838B80DE2E /* TowerWidgetKit */; };
+		E49DCF85A6544656B5D5A6E1 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = B38AA0C23757401AB6023306 /* Models */; };
+		AD4AAD98BEB64D91A322F1DC /* EmpireStateTowerWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FC4283B2C80B4727BF076939 /* EmpireStateTowerWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B4F09EA1A9247079BBC9D5B /* EmpireStateTowerWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 992ACBAD01DC4C16AE8184CC /* EmpireStateTowerWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,20 @@
 			remoteGlobalIDString = 55F64AD72AAFD84A00A5CCE5;
 			remoteInfo = EmpireStateTowerWidgetExtension;
 		};
+		9FB9B25BB2784CB8AB0501CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5584EC1E2A9EB39A00781AD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B53271B1AA2645058570C1FF;
+			remoteInfo = EmpireStateTowerWatch;
+		};
+		FFA1842333444AFDA05293F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5584EC1E2A9EB39A00781AD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9750A39DF4A4468FB378A9ED;
+			remoteInfo = EmpireStateTowerWatchWidgets;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,17 +82,36 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B3C58CDA91CF471CA0429299 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				8B4F09EA1A9247079BBC9D5B /* EmpireStateTowerWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C40A5815FE334E71B8D8E229 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AD4AAD98BEB64D91A322F1DC /* EmpireStateTowerWatchWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFeature.swift; sourceTree = "<group>"; };
 		5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpireStateTowerLights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerLightsApp.swift; sourceTree = "<group>"; };
 		5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584EC302A9EB39B00781AD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55A0F07A2AC625FE009D42DB /* EmpireModule */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EmpireModule; path = EmpireStateTowerLights/EmpireModule; sourceTree = "<group>"; };
-		55A0F07B2AC62BBF009D42DB /* Empire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empire.json; sourceTree = "<group>"; };
-		55A0F07F2AC62CEA009D42DB /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		55C4F6F32AC51A9800677B48 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		55CC5C0D2B1E7C700045B062 /* EmpireAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireAppIntents.swift; sourceTree = "<group>"; };
 		55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmpireStateTowerLightsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +122,13 @@
 		55F64AE12AAFD84A00A5CCE5 /* EmpireStateTowerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerWidget.swift; sourceTree = "<group>"; };
 		55F64AE42AAFD84C00A5CCE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55F64AE62AAFD84C00A5CCE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CAD9FA30FA4DFE9A9A7B43 /* EmpireStateTowerWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpireStateTowerWatchApp.swift; sourceTree = "<group>"; };
+		17822272659B4692A4709868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C2453708CEF4EE8855D6B5B /* WatchWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgets.swift; sourceTree = "<group>"; };
+		6624304477B34640B279AA12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F480003B75A24FA4A89DE276 /* Tips.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tips.storekit; sourceTree = "<group>"; };
+		992ACBAD01DC4C16AE8184CC /* EmpireStateTowerWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmpireStateTowerWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC4283B2C80B4727BF076939 /* EmpireStateTowerWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmpireStateTowerWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,13 +136,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A4E8C92AC78F2900199360 /* TowerViews in Frameworks */,
+				55A4E8C92AC78F2900199360 /* DesignSystem in Frameworks */,
 				558C70CB2AC6EB5400129614 /* Models in Frameworks */,
 				5584EC392A9EC16E00781AD5 /* ComposableArchitecture in Frameworks */,
-				55A4E8D12AC7A5BE00199360 /* MonthlyTowerFeature in Frameworks */,
+				55A4E8D12AC7A5BE00199360 /* TowerClient in Frameworks */,
 				55D512CD2A9FF8A600044A4E /* SwiftSoup in Frameworks */,
-				55A0F0822AC62D0D009D42DB /* Lottie in Frameworks */,
-				558C70C72AC66B5900129614 /* CurrentTowerFeature in Frameworks */,
+				558C70C72AC66B5900129614 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,13 +156,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A4E8CB2AC7907400199360 /* TowerViews in Frameworks */,
+				55A4E8CB2AC7907400199360 /* DesignSystem in Frameworks */,
 				558C70CF2AC6F28400129614 /* Models in Frameworks */,
 				55F64ADD2AAFD84A00A5CCE5 /* SwiftUI.framework in Frameworks */,
 				55F64AF92AB13A5F00A5CCE5 /* SwiftSoup in Frameworks */,
 				55F64ADB2AAFD84A00A5CCE5 /* WidgetKit.framework in Frameworks */,
 				55F64AF42AB12DB900A5CCE5 /* ComposableArchitecture in Frameworks */,
-				558C70D12AC6F28800129614 /* CurrentTowerFeature in Frameworks */,
+				558C70D12AC6F28800129614 /* TowerWidgetKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A237CD5946455490A8C19F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				628B093C207B4848BDDB5A47 /* WatchFeature in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D263DDB3CBEB4FCC820012A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6190F6837B41CC8C651A71 /* TowerWidgetKit in Frameworks */,
+				E49DCF85A6544656B5D5A6E1 /* Models in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +193,8 @@
 				5584EC282A9EB39A00781AD5 /* EmpireStateTowerLights */,
 				55D512D32AA4C61200044A4E /* EmpireStateTowerLightsTests */,
 				55F64ADE2AAFD84A00A5CCE5 /* EmpireStateTowerWidget */,
+				23E5C260248C409A96A154D5 /* EmpireStateTowerWatch */,
+				F274758637C64E4B871E3E37 /* EmpireStateTowerWatchWidgets */,
 				55F64AD92AAFD84A00A5CCE5 /* Frameworks */,
 				5584EC272A9EB39A00781AD5 /* Products */,
 			);
@@ -144,6 +206,8 @@
 				5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */,
 				55D512D22AA4C61200044A4E /* EmpireStateTowerLightsTests.xctest */,
 				55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */,
+				992ACBAD01DC4C16AE8184CC /* EmpireStateTowerWatch.app */,
+				FC4283B2C80B4727BF076939 /* EmpireStateTowerWatchWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,10 +217,10 @@
 			children = (
 				5584EC292A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift */,
 				55CC5C0D2B1E7C700045B062 /* EmpireAppIntents.swift */,
-				5508D6DE2AA8156E00E8F610 /* TabBarFeature.swift */,
 				55A0F07D2AC62BC5009D42DB /* SplashAnimation */,
 				5584EC2D2A9EB39B00781AD5 /* Assets.xcassets */,
 				5584EC2F2A9EB39B00781AD5 /* Preview Content */,
+				F480003B75A24FA4A89DE276 /* Tips.storekit */,
 			);
 			path = EmpireStateTowerLights;
 			sourceTree = "<group>";
@@ -172,8 +236,6 @@
 		55A0F07D2AC62BC5009D42DB /* SplashAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				55A0F07B2AC62BBF009D42DB /* Empire.json */,
-				55A0F07F2AC62CEA009D42DB /* LottieView.swift */,
 				55C4F6F32AC51A9800677B48 /* SplashScreen.swift */,
 			);
 			name = SplashAnimation;
@@ -207,6 +269,24 @@
 			path = EmpireStateTowerWidget;
 			sourceTree = "<group>";
 		};
+		23E5C260248C409A96A154D5 /* EmpireStateTowerWatch */ = {
+			isa = PBXGroup;
+			children = (
+				93CAD9FA30FA4DFE9A9A7B43 /* EmpireStateTowerWatchApp.swift */,
+				17822272659B4692A4709868 /* Assets.xcassets */,
+			);
+			path = EmpireStateTowerWatch;
+			sourceTree = "<group>";
+		};
+		F274758637C64E4B871E3E37 /* EmpireStateTowerWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				4C2453708CEF4EE8855D6B5B /* WatchWidgets.swift */,
+				6624304477B34640B279AA12 /* Info.plist */,
+			);
+			path = EmpireStateTowerWatchWidgets;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -218,21 +298,22 @@
 				5584EC232A9EB39A00781AD5 /* Frameworks */,
 				5584EC242A9EB39A00781AD5 /* Resources */,
 				55F64AEC2AAFD84C00A5CCE5 /* Embed Foundation Extensions */,
+				B3C58CDA91CF471CA0429299 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				55F64AEA2AAFD84C00A5CCE5 /* PBXTargetDependency */,
+				BD1433EE327E4CCABE1C9E59 /* PBXTargetDependency */,
 			);
 			name = EmpireStateTowerLights;
 			packageProductDependencies = (
 				5584EC382A9EC16E00781AD5 /* ComposableArchitecture */,
 				55D512CC2A9FF8A600044A4E /* SwiftSoup */,
-				55A0F0812AC62D0D009D42DB /* Lottie */,
-				558C70C62AC66B5900129614 /* CurrentTowerFeature */,
+				558C70C62AC66B5900129614 /* AppFeature */,
 				558C70CA2AC6EB5400129614 /* Models */,
-				55A4E8C82AC78F2900199360 /* TowerViews */,
-				55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */,
+				55A4E8C82AC78F2900199360 /* DesignSystem */,
+				55A4E8D02AC7A5BE00199360 /* TowerClient */,
 			);
 			productName = EmpireStateTowerLights;
 			productReference = 5584EC262A9EB39A00781AD5 /* EmpireStateTowerLights.app */;
@@ -273,11 +354,54 @@
 				55F64AF32AB12DB900A5CCE5 /* ComposableArchitecture */,
 				55F64AF82AB13A5F00A5CCE5 /* SwiftSoup */,
 				558C70CE2AC6F28400129614 /* Models */,
-				558C70D02AC6F28800129614 /* CurrentTowerFeature */,
-				55A4E8CA2AC7907400199360 /* TowerViews */,
+				558C70D02AC6F28800129614 /* TowerWidgetKit */,
+				55A4E8CA2AC7907400199360 /* DesignSystem */,
 			);
 			productName = EmpireStateTowerWidgetExtension;
 			productReference = 55F64AD82AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B53271B1AA2645058570C1FF /* EmpireStateTowerWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36D65FDF15A5403A9B13C936 /* Build configuration list for PBXNativeTarget "EmpireStateTowerWatch" */;
+			buildPhases = (
+				2DA210ED9C4745608F6E9EE9 /* Sources */,
+				D3A237CD5946455490A8C19F /* Frameworks */,
+				D7B7B996D2E9407DA725741A /* Resources */,
+				C40A5815FE334E71B8D8E229 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E23DE1DCD3C4FC792A2A054 /* PBXTargetDependency */,
+			);
+			name = EmpireStateTowerWatch;
+			packageProductDependencies = (
+				7359D2AF11D2474CA8056426 /* WatchFeature */,
+			);
+			productName = EmpireStateTowerWatch;
+			productReference = 992ACBAD01DC4C16AE8184CC /* EmpireStateTowerWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9750A39DF4A4468FB378A9ED /* EmpireStateTowerWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17BCAB7B71D5449C8E8E8EA9 /* Build configuration list for PBXNativeTarget "EmpireStateTowerWatchWidgets" */;
+			buildPhases = (
+				C07CD0C6A3E640F7B31A2CD6 /* Sources */,
+				D263DDB3CBEB4FCC820012A7 /* Frameworks */,
+				5EFB577086344A21964063A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmpireStateTowerWatchWidgets;
+			packageProductDependencies = (
+				42CD1901DF974F838B80DE2E /* TowerWidgetKit */,
+				B38AA0C23757401AB6023306 /* Models */,
+			);
+			productName = EmpireStateTowerWatchWidgets;
+			productReference = FC4283B2C80B4727BF076939 /* EmpireStateTowerWatchWidgets.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -300,6 +424,12 @@
 					55F64AD72AAFD84A00A5CCE5 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
+					B53271B1AA2645058570C1FF = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					9750A39DF4A4468FB378A9ED = {
+						CreatedOnToolsVersion = 27.0;
+					};
 				};
 			};
 			buildConfigurationList = 5584EC212A9EB39A00781AD5 /* Build configuration list for PBXProject "EmpireStateTowerLights" */;
@@ -314,7 +444,6 @@
 			packageReferences = (
 				5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				55A4E8CC2AC790A700199360 /* XCLocalSwiftPackageReference "EmpireStateTowerLights/EmpireModule" */,
 			);
 			productRefGroup = 5584EC272A9EB39A00781AD5 /* Products */;
@@ -324,6 +453,8 @@
 				5584EC252A9EB39A00781AD5 /* EmpireStateTowerLights */,
 				55D512D12AA4C61200044A4E /* EmpireStateTowerLightsTests */,
 				55F64AD72AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension */,
+				B53271B1AA2645058570C1FF /* EmpireStateTowerWatch */,
+				9750A39DF4A4468FB378A9ED /* EmpireStateTowerWatchWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -333,7 +464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A0F07C2AC62BBF009D42DB /* Empire.json in Resources */,
 				5584EC312A9EB39B00781AD5 /* Preview Assets.xcassets in Resources */,
 				5584EC2E2A9EB39B00781AD5 /* Assets.xcassets in Resources */,
 			);
@@ -354,6 +484,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7B7B996D2E9407DA725741A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FCBC4F01A66E48E9A80D05CB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EFB577086344A21964063A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -362,10 +507,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CC5C0E2B1E7C700045B062 /* EmpireAppIntents.swift in Sources */,
-				5508D6DF2AA8156E00E8F610 /* TabBarFeature.swift in Sources */,
 				5584EC2A2A9EB39A00781AD5 /* EmpireStateTowerLightsApp.swift in Sources */,
 				55C4F6F42AC51A9800677B48 /* SplashScreen.swift in Sources */,
-				55A0F0802AC62CEA009D42DB /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +528,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2DA210ED9C4745608F6E9EE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				015CA96405D244E7A2740AFA /* EmpireStateTowerWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C07CD0C6A3E640F7B31A2CD6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B65E7D2CC44441E9510BB67 /* WatchWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -397,6 +556,16 @@
 			isa = PBXTargetDependency;
 			target = 55F64AD72AAFD84A00A5CCE5 /* EmpireStateTowerWidgetExtension */;
 			targetProxy = 55F64AE92AAFD84C00A5CCE5 /* PBXContainerItemProxy */;
+		};
+		BD1433EE327E4CCABE1C9E59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B53271B1AA2645058570C1FF /* EmpireStateTowerWatch */;
+			targetProxy = 9FB9B25BB2784CB8AB0501CC /* PBXContainerItemProxy */;
+		};
+		6E23DE1DCD3C4FC792A2A054 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9750A39DF4A4468FB378A9ED /* EmpireStateTowerWatchWidgets */;
+			targetProxy = FFA1842333444AFDA05293F6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -522,11 +691,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EmpireStateTowerLights/Preview Content\"";
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				INFOPLIST_FILE = EmpireStateTowerLights/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Empire Tower Lights";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -539,7 +710,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -557,11 +728,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EmpireStateTowerLights/Preview Content\"";
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				INFOPLIST_FILE = EmpireStateTowerLights/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Empire Tower Lights";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -574,7 +747,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -590,10 +763,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLightsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -608,10 +781,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLightsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -627,7 +800,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EmpireStateTowerWidget/Info.plist;
@@ -638,7 +811,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.EmpireStateTowerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -654,7 +827,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EmpireStateTowerWidget/Info.plist;
@@ -665,13 +838,129 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.EmpireStateTowerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		E4D908E502C04DF396683C4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tower Lights";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.Swifttom.EmpireStateTowerLights;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.watchkitapp;
+			};
+			name = Debug;
+		};
+		D0A45376F5D6440D9CFEEDFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tower Lights";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.Swifttom.EmpireStateTowerLights;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.watchkitapp;
+			};
+			name = Release;
+		};
+		AA408E8A17014AE1AE4F05F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EmpireStateTowerWatchWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tower Lights";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.watchkitapp.widgets;
+			};
+			name = Debug;
+		};
+		F32EF56BC41B461FBED0F619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 6JBM5ZNF6C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EmpireStateTowerWatchWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tower Lights";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Swifttom.EmpireStateTowerLights.watchkitapp.widgets;
 			};
 			name = Release;
 		};
@@ -714,6 +1003,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		36D65FDF15A5403A9B13C936 /* Build configuration list for PBXNativeTarget "EmpireStateTowerWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4D908E502C04DF396683C4E /* Debug */,
+				D0A45376F5D6440D9CFEEDFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17BCAB7B71D5449C8E8E8EA9 /* Build configuration list for PBXNativeTarget "EmpireStateTowerWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA408E8A17014AE1AE4F05F1 /* Debug */,
+				F32EF56BC41B461FBED0F619 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
@@ -729,15 +1036,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.3.2;
+				minimumVersion = 1.26.0;
 			};
 		};
 		55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
@@ -745,7 +1044,7 @@
 			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -756,9 +1055,9 @@
 			package = 5584EC372A9EC16E00781AD5 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
 		};
-		558C70C62AC66B5900129614 /* CurrentTowerFeature */ = {
+		558C70C62AC66B5900129614 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CurrentTowerFeature;
+			productName = AppFeature;
 		};
 		558C70CA2AC6EB5400129614 /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -768,26 +1067,21 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
 		};
-		558C70D02AC6F28800129614 /* CurrentTowerFeature */ = {
+		558C70D02AC6F28800129614 /* TowerWidgetKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CurrentTowerFeature;
+			productName = TowerWidgetKit;
 		};
-		55A0F0812AC62D0D009D42DB /* Lottie */ = {
+		55A4E8C82AC78F2900199360 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 55A0F07E2AC62C82009D42DB /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			productName = DesignSystem;
 		};
-		55A4E8C82AC78F2900199360 /* TowerViews */ = {
+		55A4E8CA2AC7907400199360 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = TowerViews;
+			productName = DesignSystem;
 		};
-		55A4E8CA2AC7907400199360 /* TowerViews */ = {
+		55A4E8D02AC7A5BE00199360 /* TowerClient */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = TowerViews;
-		};
-		55A4E8D02AC7A5BE00199360 /* MonthlyTowerFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MonthlyTowerFeature;
+			productName = TowerClient;
 		};
 		55D512CC2A9FF8A600044A4E /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -803,6 +1097,18 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55D512CB2A9FF8A600044A4E /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		7359D2AF11D2474CA8056426 /* WatchFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WatchFeature;
+		};
+		42CD1901DF974F838B80DE2E /* TowerWidgetKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TowerWidgetKit;
+		};
+		B38AA0C23757401AB6023306 /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
