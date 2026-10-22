@@ -60,7 +60,7 @@ extension TowerClient: DependencyKey {
         return TowerClient(
             current: {
                 let page = try await html(at: "about/tower-lights")
-                return try TowerParser.parseCurrent(html: page, baseURL: baseURL, fallbackToday: CalendarDay(Date()))
+                return try TowerParser.parseCurrent(html: page, baseURL: baseURL, today: CalendarDay(Date()))
             },
             month: { month in
                 let page = try await html(at: "about/tower-lights/calendar/\(month.pathComponent)")
