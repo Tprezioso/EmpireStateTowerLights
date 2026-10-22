@@ -12,26 +12,41 @@ final class TowerParserTests: XCTestCase {
     }
 
     func testParseCurrent() throws {
-        let lights = try TowerParser.parseCurrent(
-            html: fixture("current-2026-10-03"),
-            baseURL: baseURL,
-            fallbackToday: CalendarDay(year: 2000, month: 1, day: 1)
-        )
+        let html = try fixture("current-2026-10-21")
+        let lights = try TowerParser.parseCurrent(html: html, baseURL: baseURL, today: CalendarDay(year: 2026, month: 10, day: 21))
 
-        XCTAssertEqual(lights.today.day, CalendarDay(year: 2026, month: 10, day: 3))
-        XCTAssertEqual(lights.today.title, "Blue and Orange")
-        XCTAssertEqual(lights.today.subtitle, "In Honor of the New York Islanders’ Home Opener")
+        XCTAssertEqual(lights.today.day, CalendarDay(year: 2026, month: 10, day: 21))
+        XCTAssertEqual(lights.today.title, "Signature White")
         XCTAssertEqual(
-            lights.today.imageURL?.absoluteString,
-            "https://www.esbnyc.com/sites/default/files/a1rVV00000yKThfYAG-1786642942.jpg"
+            lights.today.subtitle,
+            "A crisp white illumination that highlights the tower’s iconic silhouette with timeless elegance"
         )
-        XCTAssertEqual(lights.today.colors, [.blue, .orange])
+        XCTAssertEqual(lights.today.colors, [.white])
 
-        XCTAssertEqual(lights.yesterday?.title, "Signature White")
-        XCTAssertEqual(lights.yesterday?.day, CalendarDay(year: 2026, month: 10, day: 2))
-        XCTAssertEqual(lights.tomorrow?.title, "Signature White")
-        XCTAssertEqual(lights.tomorrow?.day, CalendarDay(year: 2026, month: 10, day: 4))
+        XCTAssertEqual(lights.yesterday?.day, CalendarDay(year: 2026, month: 10, day: 20))
+        XCTAssertEqual(lights.yesterday?.title, "Blue and Orange")
+        XCTAssertEqual(lights.yesterday?.subtitle, "In Celebration of the New York Knicks’ Home Opener")
+        XCTAssertEqual(
+            lights.yesterday?.imageURL?.absoluteString,
+            "https://empirestatebuilding2prod.prod.acquia-sites.com/sites/default/files/tlbg-da046ed81c2d0227-1792526501.jpg"
+        )
+        XCTAssertEqual(lights.tomorrow?.day, CalendarDay(year: 2026, month: 10, day: 22))
+        XCTAssertEqual(lights.tomorrow?.title, "Light Blue, Magenta, and Navy")
         XCTAssertNotNil(lights.tomorrow?.imageURL)
+
+        let knicks = try TowerParser.parseCurrent(html: html, baseURL: baseURL, today: CalendarDay(year: 2026, month: 10, day: 20))
+        XCTAssertEqual(knicks.today.colors, [.blue, .orange])
+
+        XCTAssertThrowsError(
+            try TowerParser.parseCurrent(html: html, baseURL: baseURL, today: CalendarDay(year: 2027, month: 6, day: 1)),
+            "A day outside the embedded schedule is a parsing failure"
+        )
+    }
+
+    func testJSONContainerIgnoresBracketsInStrings() {
+        let text = #"{"x":1,"days":[{"title":"A [b] {c}","d":"q\"]"},{"e":[1]}],"hero":{"t":"}"},"after":[2]}"#
+        XCTAssertEqual(TowerParser.jsonContainer(named: "days", in: text), #"[{"title":"A [b] {c}","d":"q\"]"},{"e":[1]}]"#)
+        XCTAssertEqual(TowerParser.jsonContainer(named: "hero", in: text), #"{"t":"}"}"#)
     }
 
     func testParseMonth() throws {
@@ -50,7 +65,7 @@ final class TowerParserTests: XCTestCase {
     }
 
     func testUnexpectedPagesThrow() {
-        XCTAssertThrowsError(try TowerParser.parseCurrent(html: "<html></html>", baseURL: baseURL, fallbackToday: CalendarDay(Date())))
+        XCTAssertThrowsError(try TowerParser.parseCurrent(html: "<html></html>", baseURL: baseURL, today: CalendarDay(Date())))
         XCTAssertThrowsError(try TowerParser.parseMonth(html: "<html></html>", baseURL: baseURL))
     }
 

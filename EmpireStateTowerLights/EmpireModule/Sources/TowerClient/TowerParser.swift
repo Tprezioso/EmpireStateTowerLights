@@ -10,50 +10,98 @@ import SwiftSoup
 /// Turns esbnyc.com HTML into ``TowerLighting`` values.
 public enum TowerParser {
     /// Parses https://www.esbnyc.com/about/tower-lights
-    public static func parseCurrent(html: String, baseURL: URL, fallbackToday: CalendarDay) throws -> CurrentLights {
+    ///
+    /// The page is a Next.js app whose rendered markup uses hashed class names, so this reads
+    /// the `days` schedule (roughly three months around today) embedded in its flight payload.
+    public static func parseCurrent(html: String, baseURL: URL, today: CalendarDay) throws -> CurrentLights {
         do {
             let document = try SwiftSoup.parse(html, baseURL.absoluteString)
-            guard let todayElement = try document.getElementsByClass("is-today").first() else {
-                throw TowerError.parsing
-            }
+            let payload = try document.select("script").array().compactMap { flightChunk(from: $0.data()) }.joined()
+            guard let daysJSON = jsonContainer(named: "days", in: payload) else { throw TowerError.parsing }
+            // The site fills in a generic description for its default lighting, e.g. Signature White.
+            let defaults = jsonContainer(named: "heroTowerLights", in: payload)
+                .flatMap { try? JSONDecoder().decode(HeroDefaults.self, from: Data($0.utf8)) }
 
-            let today = try parseDay(from: todayElement.select("h2").text()) ?? fallbackToday
-            let todayTitle = normalizeTitle(try todayElement.select("h3").text())
-            guard !todayTitle.isEmpty else { throw TowerError.parsing }
-
-            let backgroundStyle = try document.getElementsByClass("background-image-wrapper").first()?.attr("style") ?? ""
-            let todayLighting = TowerLighting(
-                id: "today-\(today.iso)",
-                day: today,
-                title: todayTitle,
-                subtitle: nonEmpty(try todayElement.select("p").text()),
-                imageURL: backgroundImageURL(from: backgroundStyle, baseURL: baseURL)
-            )
-
-            var yesterday: TowerLighting?
-            var tomorrow: TowerLighting?
-            for (index, element) in try document.getElementsByClass("not-today").array().enumerated() {
-                let heading = try element.select("h2").text().lowercased()
-                let isYesterday = heading.contains("yesterday") || (!heading.contains("tomorrow") && index == 0)
-                let day = today.adding(days: isYesterday ? -1 : 1)
-                let title = normalizeTitle(try element.select("h3").text())
+            var lightings: [CalendarDay: TowerLighting] = [:]
+            for scheduled in try JSONDecoder().decode([ScheduledDay].self, from: Data(daysJSON.utf8)) {
+                guard let day = CalendarDay(iso: scheduled.date) else { continue }
+                let title = normalizeTitle(scheduled.title)
                 guard !title.isEmpty else { continue }
-                let lighting = TowerLighting(
-                    id: "\(isYesterday ? "yesterday" : "tomorrow")-\(day.iso)",
+                var subtitle = nonEmpty(scheduled.description ?? "")
+                if subtitle == nil, let defaults, title.caseInsensitiveCompare(defaults.defaultTitle) == .orderedSame {
+                    subtitle = nonEmpty(defaults.defaultDescription)
+                }
+                lightings[day] = TowerLighting(
+                    id: day.iso,
                     day: day,
                     title: title,
-                    subtitle: nonEmpty(try element.select("p").text()),
-                    imageURL: resolve(try element.select("img").attr("src"), baseURL: baseURL)
+                    subtitle: subtitle,
+                    imageURL: resolve(scheduled.imageSrc ?? "", baseURL: baseURL)
                 )
-                if isYesterday { yesterday = lighting } else { tomorrow = lighting }
             }
 
-            return CurrentLights(yesterday: yesterday, today: todayLighting, tomorrow: tomorrow)
+            guard let todayLighting = lightings[today] else { throw TowerError.parsing }
+            return CurrentLights(
+                yesterday: lightings[today.adding(days: -1)],
+                today: todayLighting,
+                tomorrow: lightings[today.adding(days: 1)]
+            )
         } catch let error as TowerError {
             throw error
         } catch {
             throw TowerError.parsing
         }
+    }
+
+    /// One entry of the tower lights page's `days` schedule.
+    private struct ScheduledDay: Decodable {
+        var date: String
+        var title: String
+        var description: String?
+        var imageSrc: String?
+    }
+
+    /// The tower lights hero's copy for nights without a special lighting.
+    private struct HeroDefaults: Decodable {
+        var defaultTitle: String
+        var defaultDescription: String
+    }
+
+    /// `self.__next_f.push([1,"…"])` → the pushed string. Next.js splits its payload across many of these.
+    static func flightChunk(from script: String) -> String? {
+        let script = script.trimmingCharacters(in: .whitespacesAndNewlines)
+        let prefix = "self.__next_f.push("
+        guard script.hasPrefix(prefix), script.hasSuffix(")") else { return nil }
+        let arguments = Data(script.dropFirst(prefix.count).dropLast().utf8)
+        guard let array = try? JSONSerialization.jsonObject(with: arguments) as? [Any], array.count > 1 else { return nil }
+        return array[1] as? String
+    }
+
+    /// The JSON text of the first `"name":[…]` array or `"name":{…}` object in `text`, matching brackets outside of strings.
+    static func jsonContainer(named name: String, in text: String) -> String? {
+        guard let key = text.range(of: "\"\(name)\":[") ?? text.range(of: "\"\(name)\":{") else { return nil }
+        let start = text.index(before: key.upperBound)
+        var depth = 0
+        var inString = false
+        var isEscaped = false
+        for index in text[start...].indices {
+            let character = text[index]
+            if inString {
+                if isEscaped { isEscaped = false }
+                else if character == "\\" { isEscaped = true }
+                else if character == "\"" { inString = false }
+                continue
+            }
+            switch character {
+            case "\"": inString = true
+            case "[", "{": depth += 1
+            case "]", "}":
+                depth -= 1
+                if depth == 0 { return String(text[start...index]) }
+            default: break
+            }
+        }
+        return nil
     }
 
     /// Parses https://www.esbnyc.com/about/tower-lights/calendar/YYYYMM
@@ -94,27 +142,6 @@ public enum TowerParser {
             title = title.capitalized
         }
         return title
-    }
-
-    /// "Today, October 03, 2026" → 2026-10-03.
-    static func parseDay(from heading: String) -> CalendarDay? {
-        let pattern = #/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/#
-        guard let match = heading.firstMatch(of: pattern),
-              let day = Int(match.2), let year = Int(match.3)
-        else { return nil }
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        guard let month = formatter.monthSymbols.firstIndex(where: { $0.caseInsensitiveCompare(String(match.1)) == .orderedSame })
-        else { return nil }
-        return CalendarDay(year: year, month: month + 1, day: day)
-    }
-
-    /// `background-image:url(/sites/…/image.jpg)` → absolute URL.
-    static func backgroundImageURL(from style: String, baseURL: URL) -> URL? {
-        guard let start = style.range(of: "url("), let end = style.range(of: ")", range: start.upperBound..<style.endIndex)
-        else { return nil }
-        let path = style[start.upperBound..<end.lowerBound].trimmingCharacters(in: CharacterSet(charactersIn: "'\" "))
-        return resolve(path, baseURL: baseURL)
     }
 
     static func resolve(_ path: String, baseURL: URL) -> URL? {
